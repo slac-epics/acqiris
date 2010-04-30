@@ -1,4 +1,4 @@
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:XTrigCoupling")
+record(mbbo,"${DEVICE}:XTrigCoupling")
 {
    field(DESC,"TrigCoupling")
    field(DTYP,"acqiris")
@@ -17,7 +17,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:XTrigCoupling")
    field(FRST,"AC_50_Ohm")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:XTrigSlope")
+record(mbbo,"${DEVICE}:XTrigSlope")
 {
    field(DESC,"TrigSlope")
    field(DTYP,"acqiris")
@@ -38,7 +38,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:XTrigSlope")
    field(FVST,"Spike_Stretcher")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:XTrigLevel1")
+record(ao,"${DEVICE}:XTrigLevel1")
 {
    field(DESC,"TrigLevel1")
    field(DTYP,"acqiris")
@@ -47,7 +47,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:XTrigLevel1")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:XTrigLevel2")
+record(ao,"${DEVICE}:XTrigLevel2")
 {
    field(DESC,"TrigLevel2")
    field(DTYP,"acqiris")
@@ -56,7 +56,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:XTrigLevel2")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:XFullScale")
+record(ao,"${DEVICE}:XFullScale")
 {
    field(DESC,"FullScale")
    field(DTYP,"acqiris")
@@ -65,7 +65,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:XFullScale")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:XOffset")
+record(ao,"${DEVICE}:XOffset")
 {
    field(DESC,"Offset")
    field(DTYP,"acqiris")
@@ -74,7 +74,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:XOffset")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:XCoupling")
+record(mbbo,"${DEVICE}:XCoupling")
 {
    field(DESC,"Coupling")
    field(DTYP,"acqiris")
@@ -93,7 +93,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:XCoupling")
    field(FRST,"AC_50_Ohm")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:XBandwidth")
+record(mbbo,"${DEVICE}:XBandwidth")
 {
    field(DESC,"Bandwidth")
    field(DTYP,"acqiris")

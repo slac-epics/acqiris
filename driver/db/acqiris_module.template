@@ -1,4 +1,4 @@
-record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusBusNb")
+record(longin,"${DEVICE}:MASBusBusNb")
 {
    field(DESC,"ASBusBusNb")
    field(DTYP,"acqiris")
@@ -7,7 +7,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusBusNb")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusIsMaster")
+record(longin,"${DEVICE}:MASBusIsMaster")
 {
    field(DESC,"ASBusIsMaster")
    field(DTYP,"acqiris")
@@ -16,7 +16,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusIsMaster")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusPosInCrate")
+record(longin,"${DEVICE}:MASBusPosInCrate")
 {
    field(DESC,"ASBusPosInCrate")
    field(DTYP,"acqiris")
@@ -25,7 +25,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusPosInCrate")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusSerialNb")
+record(longin,"${DEVICE}:MASBusSerialNb")
 {
    field(DESC,"ASBusSerialNb")
    field(DTYP,"acqiris")
@@ -34,7 +34,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusSerialNb")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusSlotNb")
+record(longin,"${DEVICE}:MASBusSlotNb")
 {
    field(DESC,"ASBusSlotNb")
    field(DTYP,"acqiris")
@@ -43,7 +43,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MASBusSlotNb")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MCrateNb")
+record(longin,"${DEVICE}:MCrateNb")
 {
    field(DESC,"CrateNb")
    field(DTYP,"acqiris")
@@ -52,7 +52,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MCrateNb")
    field(SCAN,"Passive")
 }
 
-record(ai,"${DEV}:${UNIT}:${INSTR}:MDelayOffset")
+record(ai,"${DEVICE}:MDelayOffset")
 {
    field(DESC,"DelayOffset")
    field(DTYP,"acqiris")
@@ -61,7 +61,7 @@ record(ai,"${DEV}:${UNIT}:${INSTR}:MDelayOffset")
    field(SCAN,"2 second")
 }
 
-record(ai,"${DEV}:${UNIT}:${INSTR}:MDelayScale")
+record(ai,"${DEVICE}:MDelayScale")
 {
    field(DESC,"DelayScale")
    field(DTYP,"acqiris")
@@ -70,7 +70,7 @@ record(ai,"${DEV}:${UNIT}:${INSTR}:MDelayScale")
    field(SCAN,"2 second")
 }
 
-record(ai,"${DEV}:${UNIT}:${INSTR}:MExtCkRatio")
+record(ai,"${DEVICE}:MExtCkRatio")
 {
    field(DESC,"ExtCkRatio")
    field(DTYP,"acqiris")
@@ -79,7 +79,7 @@ record(ai,"${DEV}:${UNIT}:${INSTR}:MExtCkRatio")
    field(SCAN,"2 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MHasTrigVeto")
+record(longin,"${DEVICE}:MHasTrigVeto")
 {
    field(DESC,"HasTrigVeto")
    field(DTYP,"acqiris")
@@ -88,7 +88,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MHasTrigVeto")
    field(SCAN,"2 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MIsPreTriggerRunning")
+record(longin,"${DEVICE}:MIsPreTriggerRunning")
 {
    field(DESC,"IsPreTriggerRunning")
    field(DTYP,"acqiris")
@@ -97,7 +97,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MIsPreTriggerRunning")
    field(SCAN,"2 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MLogDevDataLinks")
+record(longin,"${DEVICE}:MLogDevDataLinks")
 {
    field(DESC,"LogDevDataLinks")
    field(DTYP,"acqiris")
@@ -106,7 +106,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MLogDevDataLinks")
    field(SCAN,"2 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MMaxSamplesPerChannel")
+record(longin,"${DEVICE}:MMaxSamplesPerChannel")
 {
    field(DESC,"MaxSamplesPerChannel")
    field(DTYP,"acqiris")
@@ -115,7 +115,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MMaxSamplesPerChannel")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrADCBits")
+record(longin,"${DEVICE}:MNbrADCBits")
 {
    field(DESC,"NbrADCBits")
    field(DTYP,"acqiris")
@@ -124,7 +124,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrADCBits")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrExternalTriggers")
+record(longin,"${DEVICE}:MNbrExternalTriggers")
 {
    field(DESC,"NbrExternalTriggers")
    field(DTYP,"acqiris")
@@ -133,7 +133,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrExternalTriggers")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrInternalTriggers")
+record(longin,"${DEVICE}:MNbrInternalTriggers")
 {
    field(DESC,"NbrInternalTriggers")
    field(DTYP,"acqiris")
@@ -142,7 +142,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrInternalTriggers")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrModulesInInstrument")
+record(longin,"${DEVICE}:MNbrModulesInInstrument")
 {
    field(DESC,"NbrModulesInInstrument")
    field(DTYP,"acqiris")
@@ -151,7 +151,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MNbrModulesInInstrument")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MPosInCrate")
+record(longin,"${DEVICE}:MPosInCrate")
 {
    field(DESC,"PosInCrate")
    field(DTYP,"acqiris")
@@ -160,7 +160,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MPosInCrate")
    field(SCAN,"Passive")
 }
 
-record(ai,"${DEV}:${UNIT}:${INSTR}:MSSRTimeStamp")
+record(ai,"${DEVICE}:MSSRTimeStamp")
 {
    field(DESC,"SSRTimeStamp")
    field(DTYP,"acqiris")
@@ -169,7 +169,7 @@ record(ai,"${DEV}:${UNIT}:${INSTR}:MSSRTimeStamp")
    field(SCAN,"2 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MTbSegmentPad")
+record(longin,"${DEVICE}:MTbSegmentPad")
 {
    field(DESC,"TbSegmentPad")
    field(DTYP,"acqiris")
@@ -178,7 +178,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MTbSegmentPad")
    field(SCAN,"Passive")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MTemperature_m")
+record(longin,"${DEVICE}:MTemperature_m")
 {
    field(DESC,"Temperature_m")
    field(DTYP,"acqiris")
@@ -187,7 +187,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MTemperature_m")
    field(SCAN,"2 second")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrConvertersPerChannel")
+record(longout,"${DEVICE}:MNbrConvertersPerChannel")
 {
    field(DESC,"nbrConvertersPerChannel")
    field(DTYP,"acqiris")
@@ -196,7 +196,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrConvertersPerChannel")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MUsedChannels")
+record(longout,"${DEVICE}:MUsedChannels")
 {
    field(DESC,"usedChannels")
    field(DTYP,"acqiris")
@@ -205,7 +205,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MUsedChannels")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MSignal")
+record(longout,"${DEVICE}:MSignal")
 {
    field(DESC,"signal")
    field(DTYP,"acqiris")
@@ -214,7 +214,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MSignal")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MClockType")
+record(mbbo,"${DEVICE}:MClockType")
 {
    field(DESC,"clockType")
    field(DTYP,"acqiris")
@@ -231,7 +231,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MClockType")
    field(THST,"ExtStartStop ")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MInputThreshold")
+record(ao,"${DEVICE}:MInputThreshold")
 {
    field(DESC,"inputThreshold")
    field(DTYP,"acqiris")
@@ -240,7 +240,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MInputThreshold")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MDelayNbrSamples")
+record(longout,"${DEVICE}:MDelayNbrSamples")
 {
    field(DESC,"delayNbrSamples")
    field(DTYP,"acqiris")
@@ -249,7 +249,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MDelayNbrSamples")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MInputFrequency")
+record(ao,"${DEVICE}:MInputFrequency")
 {
    field(DESC,"inputFrequency")
    field(DTYP,"acqiris")
@@ -258,7 +258,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MInputFrequency")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MSampFrequency")
+record(ao,"${DEVICE}:MSampFrequency")
 {
    field(DESC,"sampFrequency")
    field(DTYP,"acqiris")
@@ -267,7 +267,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MSampFrequency")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MFcntChannel")
+record(longout,"${DEVICE}:MFcntChannel")
 {
    field(DESC,"fcntChannel")
    field(DTYP,"acqiris")
@@ -276,7 +276,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MFcntChannel")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MType")
+record(mbbo,"${DEVICE}:MType")
 {
    field(DESC,"type")
    field(DTYP,"acqiris")
@@ -293,7 +293,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MType")
    field(THST,"TotByGate")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MTargetValue")
+record(ao,"${DEVICE}:MTargetValue")
 {
    field(DESC,"targetValue")
    field(DTYP,"acqiris")
@@ -302,7 +302,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MTargetValue")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MApertureTime")
+record(ao,"${DEVICE}:MApertureTime")
 {
    field(DESC,"apertureTime")
    field(DTYP,"acqiris")
@@ -311,7 +311,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MApertureTime")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MFcntFlags")
+record(longout,"${DEVICE}:MFcntFlags")
 {
    field(DESC,"fcntFlags")
    field(DTYP,"acqiris")
@@ -320,7 +320,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MFcntFlags")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MSampInterval")
+record(ao,"${DEVICE}:MSampInterval")
 {
    field(DESC,"sampInterval")
    field(DTYP,"acqiris")
@@ -329,7 +329,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MSampInterval")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEV}:${UNIT}:${INSTR}:MDelayTime")
+record(ao,"${DEVICE}:MDelayTime")
 {
    field(DESC,"delayTime")
    field(DTYP,"acqiris")
@@ -338,7 +338,7 @@ record(ao,"${DEV}:${UNIT}:${INSTR}:MDelayTime")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrSamples")
+record(longout,"${DEVICE}:MNbrSamples")
 {
    field(DESC,"nbrSamples")
    field(DTYP,"acqiris")
@@ -347,7 +347,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrSamples")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrMemSegments")
+record(longout,"${DEVICE}:MNbrMemSegments")
 {
    field(DESC,"nbrMemSegments")
    field(DTYP,"acqiris")
@@ -356,7 +356,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrMemSegments")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrSegments")
+record(longout,"${DEVICE}:MNbrSegments")
 {
    field(DESC,"nbrSegments")
    field(DTYP,"acqiris")
@@ -365,7 +365,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrSegments")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrBanks")
+record(longout,"${DEVICE}:MNbrBanks")
 {
    field(DESC,"nbrBanks")
    field(DTYP,"acqiris")
@@ -374,7 +374,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MNbrBanks")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MMemflags")
+record(mbbo,"${DEVICE}:MMemflags")
 {
    field(DESC,"memflags")
    field(DTYP,"acqiris")
@@ -387,7 +387,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MMemflags")
    field(ONST,"ForceInternal ")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MMode")
+record(mbbo,"${DEVICE}:MMode")
 {
    field(DESC,"mode")
    field(DTYP,"acqiris")
@@ -410,7 +410,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MMode")
    field(SVST,"SSR")
 }
 
-record(longout,"${DEV}:${UNIT}:${INSTR}:MModifier")
+record(longout,"${DEVICE}:MModifier")
 {
    field(DESC,"modifier")
    field(DTYP,"acqiris")
@@ -419,7 +419,7 @@ record(longout,"${DEV}:${UNIT}:${INSTR}:MModifier")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MModeFlags")
+record(mbbo,"${DEVICE}:MModeFlags")
 {
    field(DESC,"modeFlags")
    field(DTYP,"acqiris")
@@ -434,7 +434,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MModeFlags")
    field(TWST,"Sequence_Wrap")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MTrigClass")
+record(mbbo,"${DEVICE}:MTrigClass")
 {
    field(DESC,"trigClass")
    field(DTYP,"acqiris")
@@ -447,7 +447,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MTrigClass")
    field(ONST,"TV_Trigger")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MTriggerSource")
+record(mbbo,"${DEVICE}:MTriggerSource")
 {
    field(DESC,"TriggerSource")
    field(DTYP,"acqiris")
@@ -466,7 +466,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MTriggerSource")
    field(FRST,"External")
 }
 
-record(mbbo,"${DEV}:${UNIT}:${INSTR}:MDAQStatus")
+record(mbbo,"${DEVICE}:MDAQStatus")
 {
    field(DESC,"DAQStatus")
    field(DTYP,"acqiris")
@@ -479,7 +479,7 @@ record(mbbo,"${DEV}:${UNIT}:${INSTR}:MDAQStatus")
    field(ONST,"Running")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MEventCount")
+record(longin,"${DEVICE}:MEventCount")
 {
    field(DESC,"EventCount")
    field(DTYP,"acqiris")
@@ -488,7 +488,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MEventCount")
    field(SCAN,"1 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MTriggerTimeouts")
+record(longin,"${DEVICE}:MTriggerTimeouts")
 {
    field(DESC,"TriggerTimeouts")
    field(DTYP,"acqiris")
@@ -497,7 +497,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MTriggerTimeouts")
    field(SCAN,"1 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MReadErrors")
+record(longin,"${DEVICE}:MReadErrors")
 {
    field(DESC,"ReadErrors")
    field(DTYP,"acqiris")
@@ -506,7 +506,7 @@ record(longin,"${DEV}:${UNIT}:${INSTR}:MReadErrors")
    field(SCAN,"1 second")
 }
 
-record(longin,"${DEV}:${UNIT}:${INSTR}:MTruncated")
+record(longin,"${DEVICE}:MTruncated")
 {
    field(DESC,"TruncatedEvents")
    field(DTYP,"acqiris")
