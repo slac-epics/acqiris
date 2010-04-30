@@ -1,18 +1,24 @@
 #ifndef ACQIRIS_DRV_HH
 #define ACQIRIS_DRV_HH
 
-#define MAX_CHANNEL 4
+#define MAX_CHANNEL 10
 #define MAX_DEV 10
+#define AQ_DBG_SAMPLE_COUNT	6600
 
 #include <dbScan.h>
 #include <epicsMutex.h>
 #include <epicsEvent.h>
 #include <epicsThread.h>
+#include <epicsTime.h>
 
 extern "C" {
 struct acqiris_data_t {
   unsigned nsamples;
   void* buffer;
+  short* rarm_ptr;
+  unsigned read_ptr;
+  unsigned write_ptr;
+  epicsTimeStamp* time_ptr;
 };
 
 struct acqiris_driver_t {
@@ -29,6 +35,7 @@ struct acqiris_driver_t {
   unsigned timeouts;
   unsigned readerrors;
   unsigned truncated;
+  unsigned char version;
   acqiris_data_t data[MAX_CHANNEL];
 };
 typedef struct acqiris_driver_t ad_t;

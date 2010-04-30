@@ -259,5 +259,16 @@ record(waveform,"${DEV}:${UNIT}:${INSTR}:Data")
    field(DTYP,"acqiris")
    field(NELM,"${NELM}")
    field(FTVL,"SHORT")
-   field(INP,"@M${MODULE} C${CHANNEL} MWFS")
+   field(INP,"@M${MODULE} C${CHANNEL} MWFS V${VERSION}")
+	field(TSE,"-2")
+   field(FLNK,"${DEV}:${UNIT}:${INSTR}:Fanout.PROC PP NMS")
 }
+
+record(fanout,"${DEV}:${UNIT}:${INSTR}:Fanout")
+{
+   field(SCAN,"Passive")
+   field(DESC,"acqiris waveform fanout record")
+   field(LNK1,"$(DEST_A)")
+   field(LNK2,"$(DEST_B)")
+}
+

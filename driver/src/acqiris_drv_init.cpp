@@ -77,14 +77,32 @@ extern "C" {
       int channel;
       char name[32];
       acqiris_driver_t* ad = &acqiris_drivers[module];
-      ad->run_semaphore = epicsEventMustCreate(epicsEventEmpty);
+
+	ad->run_semaphore = epicsEventMustCreate(epicsEventEmpty);
+
       ad->daq_mutex = epicsMutexMustCreate();
       ad->count = 0;
+
+
       for(channel=0; channel<ad->nchannels; channel++) {
 	int size = (ad->maxsamples+ad->extra)*sizeof(short);
 	ad->data[channel].nsamples = 0;
 	ad->data[channel].buffer = new char[size];
+        ad->data[channel].rarm_ptr = NULL;	//Pointer to re-arm field of record.
+						//This will be later filled in by init_record.
+	ad->data[channel].write_ptr=0;
+	ad->data[channel].read_ptr=0;
+        ad->data[channel].time_ptr = NULL;	//Pointer to re-arm field of record.
       }
+        //--Variables pertaining to debug channel.
+	ad->data[ad->nchannels].nsamples =AQ_DBG_SAMPLE_COUNT;
+	ad->data[ad->nchannels].buffer = new char[AQ_DBG_SAMPLE_COUNT*sizeof(short)];//Debug channel is
+										//short int type only
+        ad->data[ad->nchannels].rarm_ptr = NULL;	//Pointer to re-arm field of record.
+	ad->data[ad->nchannels].write_ptr=0;
+	ad->data[ad->nchannels].read_ptr=0;
+        ad->data[ad->nchannels].time_ptr = NULL;	//Pointer to re-arm field of record.
+
       snprintf(name, sizeof(name), "tacqirisdaq%u", module);
       scanIoInit(&ad->ioscanpvt);
       epicsThreadMustCreate(name, 

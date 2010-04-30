@@ -1,4 +1,5 @@
 #include "acqiris_dev.hh"
+#include "acqiris_drv.hh"
 
 #include <dbAccess.h>
 #include <recGbl.h>
@@ -20,6 +21,8 @@ static int acqiris_bad_field(void* record,
 
 template<class T> int acqiris_init_record(T* record, DBLINK link)
 {
+
+
   if (link.type != INST_IO) {
     return acqiris_bad_field(record, "wrong link type", "");
   }
@@ -31,14 +34,32 @@ template<class T> int acqiris_init_record(T* record, DBLINK link)
   acqiris_record_t* arc = new acqiris_record_t;
   const char* sinp = pinstio->string;
   int status;
-  status = sscanf(sinp, "M%u C%u %s", &arc->module, &arc->channel, arc->name);
-  if (status != 3) {
-    status = sscanf(sinp, "M%u %s", &arc->module, arc->name);
-    if (status != 2)  { 
-      delete arc;
-      return acqiris_bad_field(record, "cannot parse INP field", sinp);
-    }
-  }
+	printf("Inp=%s\n",sinp);
+  unsigned int version;
+  status = sscanf(sinp, "M%u C%d %s V%u", &arc->module, &arc->channel, arc->name, &version);
+  if (status != 4)
+	{
+	version=0;
+	status = sscanf(sinp, "M%u C%d %s", &arc->module, &arc->channel, arc->name);
+	if (status != 3)
+		{
+		status = sscanf(sinp, "M%u %s", &arc->module, arc->name);
+		if (status != 2)  { 
+			delete arc;
+			return acqiris_bad_field(record, "cannot parse INP field", sinp);
+			}
+		}
+  	}
+  acqiris_driver_t* ad=&(acqiris_drivers[arc->module]);
+  if(arc->channel<0){
+	arc->channel=ad->nchannels;
+	printf("Adjusted a -ve Channel to Last Channel...%d\n",arc->channel);
+	}
+  ad->version=ad->version>version?ad->version:version;	//Unfortunaely versions are set channel wise in
+				// the .template and .sybstitution files. Take the highest specified version
+				// amoungst all channels as the version of the board. Default version is 0.
+  printf("M=%d, C=%d, V=%d, N=%s\n",arc->module,arc->channel,ad->version, arc->name);
+
   record->dpvt = arc;
 
   status = acqiris_init_record_specialized(record);
@@ -47,6 +68,20 @@ template<class T> int acqiris_init_record(T* record, DBLINK link)
     delete arc;
     return acqiris_bad_field(record, "cannot find record name", sinp);
   }
+
+if(arc->channel==ad->nchannels){
+  printf("*************************************************\n");
+  printf("*                                               *\n");
+  printf("*    acqiris_init_record                        *\n");
+  printf("*                                               *\n");
+  printf("*      Satyajit_copy                            *\n");
+  printf("*                                               *\n");
+  printf("*      INP=%s                                   *\n",sinp);
+  printf("*      MM=%d C=%d                           *\n",arc->module, arc->channel);
+  printf("*   Version %d                                   *\n",ad->version);
+  printf("*   Date: 3/29/10                                *\n");
+  printf("*************************************************\n");
+	}
 
   return 0;
 }

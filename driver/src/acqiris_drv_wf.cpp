@@ -35,6 +35,7 @@ struct acqiris_wfrecord_t
 template<> int acqiris_init_record_specialized(waveformRecord* pwf)
 {
   acqiris_record_t* arc = reinterpret_cast<acqiris_record_t*>(pwf->dpvt);
+  ad_t* ad = &(acqiris_drivers[arc->module]);
   acqiris_wfrecord_t* rwf = new acqiris_wfrecord_t;
   switch (pwf->ftvl) {
   case DBF_SHORT:
@@ -51,6 +52,8 @@ template<> int acqiris_init_record_specialized(waveformRecord* pwf)
   }
   if (rwf->rfunc) {
     arc->pvt = rwf;
+    ad->data[arc->channel].rarm_ptr= (short*) &(pwf->rarm);
+    ad->data[arc->channel].time_ptr= &(pwf->time);
     return 0;
   } else {
     delete rwf;
@@ -63,11 +66,15 @@ template<> int acqiris_read_record_specialized(waveformRecord* pwf)
   acqiris_record_t* arc = reinterpret_cast<acqiris_record_t*>(pwf->dpvt);
   ad_t* ad = &acqiris_drivers[arc->module];
   acqiris_wfrecord_t* rwf = reinterpret_cast<acqiris_wfrecord_t*>(arc->pvt);
+//  unsigned*read_ptr=ad.data[arc->channel].read_ptr;
   const void* buffer = ad->data[arc->channel].buffer;
   unsigned nsamples = ad->data[arc->channel].nsamples;
   if (nsamples > pwf->nelm) {
     nsamples = pwf->nelm;
-    ad->truncated++;
+
+    if(arc->channel != ad->nchannels){
+	ad->truncated++;
+	}
   }
   epicsMutexLock(ad->daq_mutex);
   rwf->rfunc(pwf->bptr, buffer, nsamples);
@@ -75,7 +82,6 @@ template<> int acqiris_read_record_specialized(waveformRecord* pwf)
   pwf->nord = nsamples;
   return 0;
 }
-
 
 template<> IOSCANPVT acqiris_getioscanpvt_specialized(waveformRecord* pwf)
 {
