@@ -1,4 +1,7 @@
-record(longin,"${DEVICE}:COverloadStatus")
+#
+# Needs: BASE, MODULE, CHANNEL, NELM, VERSION, DEST_A, DEST_B, CCAL
+#
+record(longin,"${BASE}:COverloadStatus")
 {
    field(DESC,"OverloadStatus")
    field(DTYP,"acqiris")
@@ -7,7 +10,7 @@ record(longin,"${DEVICE}:COverloadStatus")
    field(SCAN,"Passive")
 }
 
-record(ai,"${DEVICE}:CTrigLevelRange")
+record(ai,"${BASE}:CTrigLevelRange")
 {
    field(DESC,"TrigLevelRange")
    field(DTYP,"acqiris")
@@ -16,7 +19,7 @@ record(ai,"${DEVICE}:CTrigLevelRange")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CDitherRange")
+record(longout,"${BASE}:CDitherRange")
 {
    field(DESC,"DitherRange")
    field(DTYP,"acqiris")
@@ -25,7 +28,7 @@ record(longout,"${DEVICE}:CDitherRange")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CFixedSamples")
+record(longout,"${BASE}:CFixedSamples")
 {
    field(DESC,"FixedSamples")
    field(DTYP,"acqiris")
@@ -34,7 +37,7 @@ record(longout,"${DEVICE}:CFixedSamples")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEVICE}:CGateType")
+record(mbbo,"${BASE}:CGateType")
 {
    field(DESC,"GateType")
    field(DTYP,"acqiris")
@@ -47,7 +50,7 @@ record(mbbo,"${DEVICE}:CGateType")
    field(TWST,"Threshold_Gates")
 }
 
-record(mbbo,"${DEVICE}:CHistoTDCEnable")
+record(mbbo,"${BASE}:CHistoTDCEnable")
 {
    field(DESC,"HistoTDCEnable")
    field(DTYP,"acqiris")
@@ -60,7 +63,7 @@ record(mbbo,"${DEVICE}:CHistoTDCEnable")
    field(ONST,"Enabled")
 }
 
-record(mbbo,"${DEVICE}:CInvertData")
+record(mbbo,"${BASE}:CInvertData")
 {
    field(DESC,"InvertData")
    field(DTYP,"acqiris")
@@ -73,7 +76,7 @@ record(mbbo,"${DEVICE}:CInvertData")
    field(ONST,"Inversion")
 }
 
-record(longout,"${DEVICE}:CNbrMaxGates")
+record(longout,"${BASE}:CNbrMaxGates")
 {
    field(DESC,"NbrMaxGates")
    field(DTYP,"acqiris")
@@ -82,7 +85,7 @@ record(longout,"${DEVICE}:CNbrMaxGates")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CNbrSamples")
+record(longout,"${BASE}:CNbrSamples")
 {
    field(DESC,"NbrSamples")
    field(DTYP,"acqiris")
@@ -91,7 +94,7 @@ record(longout,"${DEVICE}:CNbrSamples")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CNbrSegments")
+record(longout,"${BASE}:CNbrSegments")
 {
    field(DESC,"NbrSegments")
    field(DTYP,"acqiris")
@@ -100,7 +103,7 @@ record(longout,"${DEVICE}:CNbrSegments")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CNbrWaveforms")
+record(longout,"${BASE}:CNbrWaveforms")
 {
    field(DESC,"NbrWaveforms")
    field(DTYP,"acqiris")
@@ -109,7 +112,7 @@ record(longout,"${DEVICE}:CNbrWaveforms")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CNbrRoundRobins")
+record(longout,"${BASE}:CNbrRoundRobins")
 {
    field(DESC,"NbrRoundRobins")
    field(DTYP,"acqiris")
@@ -118,7 +121,7 @@ record(longout,"${DEVICE}:CNbrRoundRobins")
    field(SCAN,"Passive")
 }
 
-record(longout,"${DEVICE}:CNoiseBaseEnable")
+record(longout,"${BASE}:CNoiseBaseEnable")
 {
    field(DESC,"NoiseBaseEnable")
    field(DTYP,"acqiris")
@@ -127,7 +130,7 @@ record(longout,"${DEVICE}:CNoiseBaseEnable")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEVICE}:CNoiseBase")
+record(ao,"${BASE}:CNoiseBase")
 {
    field(DESC,"NoiseBase")
    field(DTYP,"acqiris")
@@ -136,7 +139,7 @@ record(ao,"${DEVICE}:CNoiseBase")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEVICE}:CTrigCoupling")
+record(mbbo,"${BASE}:CTrigCoupling")
 {
    field(DESC,"TrigCoupling")
    field(DTYP,"acqiris")
@@ -155,7 +158,7 @@ record(mbbo,"${DEVICE}:CTrigCoupling")
    field(FRST,"AC_50_Ohm")
 }
 
-record(mbbo,"${DEVICE}:CTrigSlope")
+record(mbbo,"${BASE}:CTrigSlope")
 {
    field(DESC,"TrigSlope")
    field(DTYP,"acqiris")
@@ -176,7 +179,7 @@ record(mbbo,"${DEVICE}:CTrigSlope")
    field(FVST,"Spike_Stretcher")
 }
 
-record(ao,"${DEVICE}:CTrigLevel1")
+record(ao,"${BASE}:CTrigLevel1")
 {
    field(DESC,"TrigLevel1")
    field(DTYP,"acqiris")
@@ -185,7 +188,7 @@ record(ao,"${DEVICE}:CTrigLevel1")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEVICE}:CTrigLevel2")
+record(ao,"${BASE}:CTrigLevel2")
 {
    field(DESC,"TrigLevel2")
    field(DTYP,"acqiris")
@@ -194,16 +197,17 @@ record(ao,"${DEVICE}:CTrigLevel2")
    field(SCAN,"Passive")
 }
 
-record(ao,"${DEVICE}:CFullScale")
+record(ao,"${BASE}:CFullScale")
 {
    field(DESC,"FullScale")
    field(DTYP,"acqiris")
-   field(OUT,"@M${MODULE} C${CHANNEL} CFLSC")
-   field(PINI,"YES")
+   field(OUT, "@M${MODULE} C${CHANNEL} CFLSC")
    field(SCAN,"Passive")
+   field(PINI,"YES")
+   field(FLNK,"$(CCAL)")
 }
 
-record(ao,"${DEVICE}:COffset")
+record(ao,"${BASE}:COffset")
 {
    field(DESC,"Offset")
    field(DTYP,"acqiris")
@@ -212,7 +216,7 @@ record(ao,"${DEVICE}:COffset")
    field(SCAN,"Passive")
 }
 
-record(mbbo,"${DEVICE}:CCoupling")
+record(mbbo,"${BASE}:CCoupling")
 {
    field(DESC,"Coupling")
    field(DTYP,"acqiris")
@@ -231,7 +235,7 @@ record(mbbo,"${DEVICE}:CCoupling")
    field(FRST,"AC_50_Ohm")
 }
 
-record(mbbo,"${DEVICE}:CBandwidth")
+record(mbbo,"${BASE}:CBandwidth")
 {
    field(DESC,"Bandwidth")
    field(DTYP,"acqiris")
@@ -252,7 +256,7 @@ record(mbbo,"${DEVICE}:CBandwidth")
    field(FVST,"35Mhz")
 }
 
-record(waveform,"${DEVICE}:Data")
+record(waveform,"${BASE}:Data")
 {
    field(SCAN,"I/O Intr")
    field(DESC,"acqiris waveform record")
@@ -261,13 +265,13 @@ record(waveform,"${DEVICE}:Data")
    field(FTVL,"SHORT")
    field(INP,"@M${MODULE} C${CHANNEL} MWFS V${VERSION}")
 	field(TSE,"-2")
-   field(FLNK,"${DEVICE}:Fanout.PROC PP NMS")
+   field(FLNK,"${BASE}:Fanout.PROC PP NMS")
 }
 
-record(fanout,"${DEVICE}:Fanout")
+record(fanout,"${BASE}:Fanout")
 {
    field(SCAN,"Passive")
-   field(DESC,"acqiris waveform fanout record")
+   field(DESC,"acq wfrm fanout")
    field(LNK1,"$(DEST_A)")
    field(LNK2,"$(DEST_B)")
 }

@@ -34,7 +34,9 @@ template<class T> int acqiris_init_record(T* record, DBLINK link)
   acqiris_record_t* arc = new acqiris_record_t;
   const char* sinp = pinstio->string;
   int status;
+#ifdef MCB
 	printf("Inp=%s\n",sinp);
+#endif
   unsigned int version;
   status = sscanf(sinp, "M%u C%d %s V%u", &arc->module, &arc->channel, arc->name, &version);
   if (status != 4)
@@ -51,14 +53,16 @@ template<class T> int acqiris_init_record(T* record, DBLINK link)
 		}
   	}
   acqiris_driver_t* ad=&(acqiris_drivers[arc->module]);
-  if(arc->channel<0){
-	arc->channel=ad->nchannels;
-	printf("Adjusted a -ve Channel to Last Channel...%d\n",arc->channel);
-	}
-  ad->version=ad->version>version?ad->version:version;	//Unfortunaely versions are set channel wise in
-				// the .template and .sybstitution files. Take the highest specified version
-				// amoungst all channels as the version of the board. Default version is 0.
+  if(arc->channel<0) {
+      arc->channel=ad->nchannels;
+      printf("Inp=%s, Adjusted a -ve Channel to Last Channel...%d\n", sinp, arc->channel);
+  }
+  ad->version=ad->version>version?ad->version:version;	//Unfortunately versions are set channel wise in
+				// the .template and .substitution files. Take the highest specified version
+				// amongst all channels as the version of the board. Default version is 0.
+#ifdef MCB
   printf("M=%d, C=%d, V=%d, N=%s\n",arc->module,arc->channel,ad->version, arc->name);
+#endif
 
   record->dpvt = arc;
 
@@ -68,7 +72,7 @@ template<class T> int acqiris_init_record(T* record, DBLINK link)
     delete arc;
     return acqiris_bad_field(record, "cannot find record name", sinp);
   }
-
+#ifdef MCB
 if(arc->channel==ad->nchannels){
   printf("*************************************************\n");
   printf("*                                               *\n");
@@ -82,13 +86,15 @@ if(arc->channel==ad->nchannels){
   printf("*   Date: 3/29/10                                *\n");
   printf("*************************************************\n");
 	}
-
+#endif
   return 0;
 }
 
 template<class T> int acqiris_read_record(T* record)
 {
-  int status = acqiris_read_record_specialized(record);
+  acqiris_record_t* arc = reinterpret_cast<acqiris_record_t*>(record->dpvt);
+  ad_t* ad = &acqiris_drivers[arc->module];
+  int status = !ad->run_semaphore || acqiris_read_record_specialized(record);
   if (status) {
     record->nsta = UDF_ALARM;
     record->nsev = INVALID_ALARM;
@@ -99,7 +105,9 @@ template<class T> int acqiris_read_record(T* record)
 
 template<class T> int acqiris_write_record(T* record)
 {
-  int status = acqiris_write_record_specialized(record);
+  acqiris_record_t* arc = reinterpret_cast<acqiris_record_t*>(record->dpvt);
+  ad_t* ad = &acqiris_drivers[arc->module];
+  int status = !ad->run_semaphore || acqiris_write_record_specialized(record);
   if (status) {
     record->nsta = UDF_ALARM;
     record->nsev = INVALID_ALARM;

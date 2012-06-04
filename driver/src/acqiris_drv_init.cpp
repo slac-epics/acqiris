@@ -5,6 +5,7 @@
 #include <AcqirisImport.h>
 
 #include <epicsExport.h>
+#include <dbAccess.h>
 #include <iocsh.h>
 
 #include <stdio.h>
@@ -23,7 +24,7 @@ extern "C" {
       "EEPROM Instrument Section",
       "CPLD Firmware"
     };
-    const ViInt32 expected[4] = {0x10006, 0x3, 0x8, 0x2a};
+    const ViInt32 expected[4] = { ACQIRIS_KVERSION, 0x3, 0x8, 0x2a};
     ViInt32 found[4];
     for (int v=0; v<4; v++) {
       Acqrs_getVersion(id, v+1, found+v);
@@ -67,6 +68,7 @@ extern "C" {
 
   static int acqirisInit(int order)
   {
+    static unsigned long ev140 = 140;
     nbr_acqiris_drivers = acqiris_find_devices();
     if (!nbr_acqiris_drivers) {
       fprintf(stderr, "*** Could not find any acqiris device\n");
@@ -82,7 +84,8 @@ extern "C" {
 
       ad->daq_mutex = epicsMutexMustCreate();
       ad->count = 0;
-
+      ad->trigger = &ev140;
+      ad->gen = &ev140;
 
       for(channel=0; channel<ad->nchannels; channel++) {
 	int size = (ad->maxsamples+ad->extra)*sizeof(short);
@@ -106,11 +109,23 @@ extern "C" {
       snprintf(name, sizeof(name), "tacqirisdaq%u", module);
       scanIoInit(&ad->ioscanpvt);
       epicsThreadMustCreate(name, 
-			    epicsThreadPriorityMin, 
+			    epicsThreadPriorityHigh + 5, // MCB epicsThreadPriorityMin?!?
 			    5000000,
 			    acqiris_daq_thread, 
 			    ad); 
     }    
+    return 0;
+  }
+
+  static int acqirisSetTrigger(int module, char *trigger)
+  {
+    DBADDR trigaddr;
+    if (dbNameToAddr(trigger, &trigaddr)) {
+        printf("No PV trigger named %s!\n", trigger);
+        return 1;
+    }
+    acqiris_drivers[module].trigger = (unsigned long *) trigaddr.pfield;
+    acqiris_drivers[module].gen = 4 + (unsigned long *) trigaddr.pfield;
     return 0;
   }
 
@@ -121,12 +136,35 @@ extern "C" {
 
   static void acqirisInitCallFunc(const iocshArgBuf *arg)
   {
-    acqirisInit(arg[0].ival);  
+    acqirisInit(arg[0].ival);
   }
+
+  static const iocshArg acqirisSetTriggerArg0 = {"module",iocshArgInt};
+  static const iocshArg acqirisSetTriggerArg1 = {"trigger", iocshArgString};
+  static const iocshArg * const acqirisSetTriggerArgs[2] = {&acqirisSetTriggerArg0,
+                                                            &acqirisSetTriggerArg1};
+  static const iocshFuncDef acqirisSetTriggerFuncDef =
+    {"acqirisSetTrigger",2,acqirisSetTriggerArgs};
+
+  static void acqirisSetTriggerCallFunc(const iocshArgBuf *arg)
+  {
+    acqirisSetTrigger(arg[0].ival, arg[1].sval);
+  }
+
+static const iocshArg		acqdebugArg0	= { "level",	iocshArgInt };
+static const iocshArg	*	acqdebugArgs[1]	= { &acqdebugArg0 };
+static const iocshFuncDef   acqdebugFuncDef	= { "acqdebug", 1, acqdebugArgs };
+extern int acq_debug;
+static void  acqdebugCall( const iocshArgBuf * args )
+{
+    acq_debug = args[0].ival;
+}
 
   void acqirisRegistrar()
   {
     iocshRegister(&acqirisInitFuncDef,acqirisInitCallFunc);
+    iocshRegister(&acqirisSetTriggerFuncDef,acqirisSetTriggerCallFunc);
+    iocshRegister(&acqdebugFuncDef,acqdebugCall);
   }
 
   epicsExportRegistrar(acqirisRegistrar);

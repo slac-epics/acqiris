@@ -1,10 +1,23 @@
 TOP := ../..
 include $(TOP)/configure/CONFIG
 
-# Note: cannot build for 64bits because we don't have the Acqiris driver
-ifeq ($(T_A),linux-x86)
-LIBRARY := acqiris_support
+ifeq ($(T_A),linux-x86_64)
+ACQIRISDIR := /reg/neh/home/mcbrowne/acqiris
+ACQIRIS_INCLUDE := $(ACQIRISDIR)/include
+ACQIRIS_LIB := $(ACQIRISDIR)/lib
+ACQIRIS_KVERSION := 0x20000
 
+LIBRARY := acqiris_support
+DBD += acqiris_support.dbd
+endif
+
+ifeq ($(T_A),linux-x86)
+ACQIRISDIR := /reg/g/pcds/package/acqiris
+ACQIRIS_INCLUDE := $(ACQIRISDIR)/usr/include
+ACQIRIS_LIB := $(ACQIRISDIR)/usr/lib
+ACQIRIS_KVERSION := 0x10006
+
+LIBRARY := acqiris_support
 DBD += acqiris_support.dbd
 endif
 
@@ -24,13 +37,8 @@ LIBSRCS += acqiris_drv_wf.cpp
 LIBSRCS += acqiris_daq.cpp
 LIBSRCS += acqiris_drv_init.cpp
 
-ifndef ACQIRISDIR
-ACQIRISDIR := $(EPICS_TOP)/../acqiris
-endif
-ACQIRIS_INCLUDE := $(ACQIRISDIR)/usr/include
-ACQIRIS_LIB := $(ACQIRISDIR)/usr/lib
-USR_CFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX
-USR_CPPFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX
+USR_CFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
+USR_CPPFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
 acqiris_support_LDFLAGS += -L$(ACQIRIS_LIB) -lAqDrv4
 
 include $(TOP)/configure/RULES

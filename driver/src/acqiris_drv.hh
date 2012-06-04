@@ -25,6 +25,8 @@ struct acqiris_driver_t {
   int module;
   int nchannels;
   int id;
+  unsigned long *trigger;
+  unsigned long *gen;
   IOSCANPVT ioscanpvt;
   epicsEventId run_semaphore;
   epicsMutexId daq_mutex;
