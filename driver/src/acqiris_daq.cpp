@@ -385,12 +385,10 @@ extern "C"
                 // Count the rearm flags.
                 unsigned short rarm_flag;
                 rarm_flag=0;
-#if 0 /* MCB - Who cares for now?!? */
                 if((ad->version>0)&&(trigger_skip_count < TRIG_BLOCK_PROTECTION)){
                     for (int channel=0; channel<ad->nchannels; channel++)
                         rarm_flag+=(*(ad->data[channel].rarm_ptr)); 
                 }
-#endif
 
                 if (rarm_flag==ad->nchannels || !in_sync || !eventvalid || resynching) {
                     unsigned long long acq_ts_now;
