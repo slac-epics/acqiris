@@ -264,7 +264,15 @@ record(waveform,"${BASE}:Data")
    field(NELM,"${NELM}")
    field(FTVL,"SHORT")
    field(INP,"@M${MODULE} C${CHANNEL} MWFS V${VERSION}")
-	field(TSE,"-2")
+   field(TSE,"-2")
+   field(FLNK,"${BASE}:CURRENTFID.PROC PP NMS")
+}
+
+record(genSub, "${BASE}:CURRENTFID") {
+   field(DESC, "Current Fiducial")
+   field(SCAN, "Passive")
+   field(SNAM, "evrTimeGetFiducial")
+   field(INPA, "${BASE}:Data.NAME")
    field(FLNK,"${BASE}:Fanout.PROC PP NMS")
 }
 
