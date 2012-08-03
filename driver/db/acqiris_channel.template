@@ -273,6 +273,7 @@ record(genSub, "${BASE}:CURRENTFID") {
    field(SCAN, "Passive")
    field(SNAM, "evrTimeGetFiducial")
    field(INPA, "${BASE}:Data.NAME")
+   field(TSEL, "${BASE}:Data.TIME")
    field(FLNK,"${BASE}:Fanout.PROC PP NMS")
 }
 
