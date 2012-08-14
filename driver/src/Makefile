@@ -2,9 +2,9 @@ TOP := ../..
 include $(TOP)/configure/CONFIG
 
 ifeq ($(T_A),linux-x86_64)
-ACQIRISDIR := /reg/neh/home/mcbrowne/acqiris
+ACQIRISDIR := /reg/g/pcds/package/external/acqiris_4.2a
 ACQIRIS_INCLUDE := $(ACQIRISDIR)/include
-ACQIRIS_LIB := $(ACQIRISDIR)/lib
+ACQIRIS_LIB := $(ACQIRISDIR)/lib64
 ACQIRIS_KVERSION := 0x20000
 
 LIBRARY := acqiris_support
