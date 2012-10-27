@@ -1,0 +1,9 @@
+
+The test directory contains src for a standalone
+calibration test.   Just run make in that directory
+to build the acqconf executable and then run it on
+the system hosting the acqiris card.
+
+The test will call the vendor Acqrs_calibrate() function
+for each board installed and print the status code
+it returns.
