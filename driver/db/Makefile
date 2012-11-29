@@ -10,9 +10,20 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install)
 # databases, templates, substitutions like this
-DB += acqiris_module.template
+DB += acqiris_board.db
+DB += acqiris_board.substitutions
 DB += acqiris_channel.template
+DB += acqiris_channel_extras.template
+DB += acqiris_module.template
+DB += acqiris_module_extras.template
 DB += acqiris_trigger.template
+
+# Create and install archive files
+#ARCHIVE += acqiris.tpl-arch
+
+# Create and install autosave files
+REQ += acqiris.tpl-req
+
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

@@ -1,2 +1,9 @@
 # Following avoid cross compilations
-CROSS_COMPILER_TARGET_ARCHS=linux-x86 linux-x86_64
+
+ifeq '$(EPICS_HOST_ARCH)' 'linux-x86_64'
+CROSS_COMPILER_TARGET_ARCHS=linux-x86
+BUILD_FOR_HOST_ARCH=
+else
+CROSS_COMPILER_TARGET_ARCHS=
+BUILD_FOR_HOST_ARCH=1
+endif

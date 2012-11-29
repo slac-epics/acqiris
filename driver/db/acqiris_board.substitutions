@@ -1,0 +1,34 @@
+file acqiris_module.template
+{
+  {BASE=$(ROOT), MODULE=$(MODULE), DBG_NELM=$(DBG_NELM)}
+}
+
+file acqiris_module_extras.template
+{
+  {BASE=$(ROOT), MODULE=$(MODULE)}
+}
+
+file acqiris_channel.template
+{
+  {BASE=$(ROOT):CH1, MODULE=$(MODULE), CHANNEL=0, NELM=5000, VERSION=$(VERSION),
+   DEST_A="\$(DEST_A1=)", DEST_B="\$(DEST_B1=)", CCAL="\$(CCAL1=)" }
+  {BASE=$(ROOT):CH2, MODULE=$(MODULE), CHANNEL=1, NELM=5000, VERSION=$(VERSION),
+   DEST_A="\$(DEST_A2=)", DEST_B="\$(DEST_B2=)", CCAL="\$(CCAL2=)" }
+  {BASE=$(ROOT):CH3, MODULE=$(MODULE), CHANNEL=2, NELM=5000, VERSION=$(VERSION),
+   DEST_A="\$(DEST_A3=)", DEST_B="\$(DEST_B3=)", CCAL="\$(CCAL3=)" }
+  {BASE=$(ROOT):CH4, MODULE=$(MODULE), CHANNEL=3, NELM=5000, VERSION=$(VERSION),
+   DEST_A="\$(DEST_A4=)", DEST_B="\$(DEST_B4=)", CCAL="\$(CCAL4=)" }
+}
+
+file acqiris_channel_extras.template
+{
+  {BASE=$(ROOT):CH1, MODULE=$(MODULE), CHANNEL=0}
+  {BASE=$(ROOT):CH2, MODULE=$(MODULE), CHANNEL=1}
+  {BASE=$(ROOT):CH3, MODULE=$(MODULE), CHANNEL=2}
+  {BASE=$(ROOT):CH4, MODULE=$(MODULE), CHANNEL=3}
+}
+
+file acqiris_trigger.template
+{  
+  {BASE=$(ROOT), MODULE=$(MODULE), CHANNEL=0}
+}

@@ -1,0 +1,41 @@
+record(calc,"$(BASE):CVPerDiv"){
+   field(DESC,"Volts Per Div")
+   field(PINI,"YES")
+   field(SCAN,"Passive")
+   field(PREC,"2")
+   field(EGU,"V/div")
+   field(CALC,"F/8")
+   field(INPF,"$(BASE):CFullScale CPP MS")
+}
+
+record(calc,"$(BASE):CCenter"){
+   field(DESC,"Center Vert")
+   field(PINI,"YES")
+   field(SCAN,"Passive")
+   field(PREC,"2")
+   field(EGU,"V")
+   field(CALC,"-D")
+   field(INPD,"$(BASE):COffset CPP MS")
+}
+
+record(calc,"$(BASE):CMaxVert"){
+   field(DESC,"Max Vert")
+   field(PINI,"YES")
+   field(SCAN,"Passive")
+   field(PREC,"2")
+   field(EGU,"V")
+   field(CALC,"-D+F/2")
+   field(INPD,"$(BASE):COffset CPP MS")
+   field(INPF,"$(BASE):CFullScale CPP MS")
+}
+
+record(calc,"$(BASE):CMinVert"){
+   field(DESC,"Min Vert")
+   field(PINI,"YES")
+   field(SCAN,"Passive")
+   field(PREC,"2")
+   field(EGU,"V")
+   field(CALC,"-D-F/2")
+   field(INPD,"$(BASE):COffset CPP MS")
+   field(INPF,"$(BASE):CFullScale CPP MS")
+}

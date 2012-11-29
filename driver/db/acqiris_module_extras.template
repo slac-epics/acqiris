@@ -1,0 +1,18 @@
+record(calc,"$(BASE):MEventRate"){
+   field(DESC,"Event Rate")
+   field(CALC,"B-A")
+   field(INPA,"$(BASE):MEventRate.LB NPP MS")
+   field(INPB,"$(BASE):MEventCount.VAL NPP MS")
+   field(SCAN,"1 second")
+   field(LOW,"0")
+   field(LSV,"MINOR")
+   field(EGU,"Hz")
+}
+
+record(bo, "$(BASE):Rearm") {
+  field(DESC, "Rearm the Acqiris")
+  field(DOL, "0")
+  field(OUT, "$(BASE):CH1:Data.RARM NPP MS")
+  field(ZNAM, "READY")
+  field(ONAM, "DONE")
+}
