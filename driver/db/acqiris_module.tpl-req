@@ -1,0 +1,30 @@
+# Acqiris Module autosave PV list
+
+# Controls
+$(BASE):Rearm
+$(BASE):MApertureTime
+$(BASE):MClockType
+$(BASE):MDAQStatus
+$(BASE):MDelayNbrSamples
+$(BASE):MDelayTime
+$(BASE):MFcntChannel
+$(BASE):MFcntFlags
+$(BASE):MInputFrequency
+$(BASE):MInputThreshold
+$(BASE):MMemflags
+$(BASE):MMode
+$(BASE):MModeFlags
+$(BASE):MModifier
+$(BASE):MNbrBanks
+$(BASE):MNbrConvertersPerChannel
+$(BASE):MNbrMemSegments
+$(BASE):MNbrSamples
+$(BASE):MNbrSegments
+$(BASE):MSampFrequency
+$(BASE):MSampInterval
+$(BASE):MSignal
+$(BASE):MTargetValue
+$(BASE):MTrigClass
+$(BASE):MTriggerSource
+$(BASE):MType
+$(BASE):MUsedChannels

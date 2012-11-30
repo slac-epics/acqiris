@@ -1,0 +1,31 @@
+# Acqiris Channel archive PV list
+
+# Status values
+$(BASE):CTrigLevelRange			1
+$(BASE):COverloadStatus			1
+
+# Controls
+$(BASE):CFullScale				1		monitor
+$(BASE):CNoiseBase				1		monitor
+$(BASE):COffset					1		monitor
+$(BASE):CTrigLevel1				1		monitor
+$(BASE):CTrigLevel2				1		monitor
+$(BASE):CCenter					1		monitor
+$(BASE):CMaxVert				1		monitor
+$(BASE):CMinVert				1		monitor
+$(BASE):CVPerDiv				1		monitor
+$(BASE):CDitherRange			1		monitor
+$(BASE):CFixedSamples			1		monitor
+$(BASE):CNbrMaxGates			1		monitor
+$(BASE):CNbrRoundRobins			1		monitor
+$(BASE):CNbrSamples				1		monitor
+$(BASE):CNbrSegments			1		monitor
+$(BASE):CNbrWaveforms			1		monitor
+$(BASE):CNoiseBaseEnable		1		monitor
+$(BASE):CBandwidth				1		monitor
+$(BASE):CCoupling				1		monitor
+$(BASE):CGateType				1		monitor
+$(BASE):CHistoTDCEnable			1		monitor
+$(BASE):CInvertData				1		monitor
+$(BASE):CTrigCoupling			1		monitor
+$(BASE):CTrigSlope				1		monitor

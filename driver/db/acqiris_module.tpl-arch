@@ -1,0 +1,58 @@
+# Acqiris Module archive PV list
+
+# Status values
+${BASE}:MDelayOffset				1
+${BASE}:MDelayScale					1
+${BASE}:MExtCkRatio					1
+${BASE}:MSSRTimeStamp				1
+$(BASE):MEventRate					1
+${BASE}:MASBusBusNb					1
+${BASE}:MASBusIsMaster				1
+${BASE}:MASBusPosInCrate			1
+${BASE}:MASBusSerialNb				1
+${BASE}:MASBusSlotNb				1
+${BASE}:MCrateNb					1
+${BASE}:MEventCount					1
+${BASE}:MHasTrigVeto				1
+${BASE}:MIsPreTriggerRunning		1
+${BASE}:MLogDevDataLinks			1
+${BASE}:MMaxSamplesPerChannel		1
+${BASE}:MNbrADCBits					1
+${BASE}:MNbrExternalTriggers		1
+${BASE}:MNbrInternalTriggers		1
+${BASE}:MNbrModulesInInstrument		1
+${BASE}:MPosInCrate					1
+${BASE}:MReadErrors					1
+${BASE}:MTbSegmentPad				1
+${BASE}:MTemperature_m				1
+${BASE}:MTriggerTimeouts			1
+${BASE}:MTruncated					1
+
+# Controls
+${BASE}:MApertureTime				1		monitor
+${BASE}:MDelayTime					1		monitor
+${BASE}:MInputFrequency				1		monitor
+${BASE}:MInputThreshold				1		monitor
+${BASE}:MSampFrequency				1		monitor
+${BASE}:MSampInterval				1		monitor
+${BASE}:MTargetValue				1		monitor
+$(BASE):Rearm						1		monitor
+${BASE}:MDelayNbrSamples			1		monitor
+${BASE}:MFcntChannel				1		monitor
+${BASE}:MFcntFlags					1		monitor
+${BASE}:MModifier					1		monitor
+${BASE}:MNbrBanks					1		monitor
+${BASE}:MNbrConvertersPerChannel	1		monitor
+${BASE}:MNbrMemSegments				1		monitor
+${BASE}:MNbrSamples					1		monitor
+${BASE}:MNbrSegments				1		monitor
+${BASE}:MSignal						1		monitor
+${BASE}:MUsedChannels				1		monitor
+${BASE}:MClockType					1		monitor
+${BASE}:MDAQStatus					1		monitor
+${BASE}:MMemflags					1		monitor
+${BASE}:MMode						1		monitor
+${BASE}:MModeFlags					1		monitor
+${BASE}:MTrigClass					1		monitor
+${BASE}:MTriggerSource				1		monitor
+${BASE}:MType						1		monitor

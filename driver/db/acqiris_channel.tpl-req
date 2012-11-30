@@ -1,0 +1,23 @@
+# Acqiris Channel autosave PV list
+
+# Controls
+${BASE}:CFullScale
+${BASE}:CNoiseBase
+${BASE}:COffset
+${BASE}:CTrigLevel1
+${BASE}:CTrigLevel2
+${BASE}:CDitherRange
+${BASE}:CFixedSamples
+${BASE}:CNbrMaxGates
+${BASE}:CNbrRoundRobins
+${BASE}:CNbrSamples
+${BASE}:CNbrSegments
+${BASE}:CNbrWaveforms
+${BASE}:CNoiseBaseEnable
+${BASE}:CBandwidth
+${BASE}:CCoupling
+${BASE}:CGateType
+${BASE}:CHistoTDCEnable
+${BASE}:CInvertData
+${BASE}:CTrigCoupling
+${BASE}:CTrigSlope

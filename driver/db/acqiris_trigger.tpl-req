@@ -1,0 +1,12 @@
+# Acqiris Trigger autosave PV list
+
+# Controls
+${BASE}:XBandwidth
+${BASE}:XCoupling
+${BASE}:XFullScale
+${BASE}:XOffset
+${BASE}:XTrigCoupling
+${BASE}:XTrigLevel1
+${BASE}:XTrigLevel2
+${BASE}:XTrigSlope
+

@@ -19,15 +19,18 @@ DB += acqiris_module_extras.template
 DB += acqiris_trigger.template
 
 # Create and install archive files
-#ARCHIVE += acqiris.tpl-arch
+ARCHIVE += acqiris_channel.tpl-arch
+ARCHIVE += acqiris_module.tpl-arch
+ARCHIVE += acqiris_trigger.tpl-arch
+ARCHIVE += acqiris_board.sub-arch
+ARCHIVE += acqiris_board.archive
 
 # Create and install autosave files
-REQ += acqiris.tpl-req
-
-
-#----------------------------------------------------
-# If <anyname>.db template is not named <anyname>*.template add
-# <anyname>_TEMPLATE = <templatename>
+REQ += acqiris_channel.tpl-req
+REQ += acqiris_module.tpl-req
+REQ += acqiris_trigger.tpl-req
+REQ += acqiris_board.sub-req
+REQ += acqiris_board.req
 
 include $(TOP)/configure/RULES
 #----------------------------------------

@@ -1,0 +1,18 @@
+# Acqiris board archive substitutions file
+file acqiris_module.tpl-arch
+{
+  {	BASE=$(ROOT)		}
+}
+
+file acqiris_channel.tpl-arch
+{
+  {	BASE=$(ROOT):CH1	}
+  {	BASE=$(ROOT):CH2	}
+  {	BASE=$(ROOT):CH3	}
+  {	BASE=$(ROOT):CH4	}
+}
+
+file acqiris_trigger.tpl-arch
+{  
+  {	BASE=$(ROOT)		}
+}

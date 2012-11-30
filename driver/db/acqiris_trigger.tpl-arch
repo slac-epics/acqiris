@@ -1,0 +1,11 @@
+# Acqiris Trigger archive PV list
+
+# Controls
+${BASE}:XFullScale					1		monitor
+${BASE}:XOffset						1		monitor
+${BASE}:XTrigLevel1					1		monitor
+${BASE}:XTrigLevel2					1		monitor
+${BASE}:XBandwidth					1		monitor
+${BASE}:XCoupling					1		monitor
+${BASE}:XTrigCoupling				1		monitor
+${BASE}:XTrigSlope					1		monitor

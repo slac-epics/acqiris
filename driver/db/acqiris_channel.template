@@ -268,7 +268,8 @@ record(waveform,"${BASE}:Data")
    field(FLNK,"${BASE}:CURRENTFID.PROC PP NMS")
 }
 
-record(genSub, "${BASE}:CURRENTFID") {
+record(genSub, "${BASE}:CURRENTFID")
+{
    field(DESC, "Current Fiducial")
    field(SCAN, "Passive")
    field(SNAM, "evrTimeGetFiducial")
@@ -285,7 +286,8 @@ record(fanout,"${BASE}:Fanout")
    field(LNK2,"$(DEST_B)")
 }
 
-record(calc,"$(BASE):CVPerDiv"){
+record(calc,"$(BASE):CVPerDiv")
+{
    field(DESC,"Volts Per Div")
    field(PINI,"YES")
    field(SCAN,"Passive")
@@ -295,7 +297,8 @@ record(calc,"$(BASE):CVPerDiv"){
    field(INPF,"$(BASE):CFullScale CPP MS")
 }
 
-record(calc,"$(BASE):CCenter"){
+record(calc,"$(BASE):CCenter")
+{
    field(DESC,"Center Vert")
    field(PINI,"YES")
    field(SCAN,"Passive")
@@ -305,7 +308,8 @@ record(calc,"$(BASE):CCenter"){
    field(INPD,"$(BASE):COffset CPP MS")
 }
 
-record(calc,"$(BASE):CMaxVert"){
+record(calc,"$(BASE):CMaxVert")
+{
    field(DESC,"Max Vert")
    field(PINI,"YES")
    field(SCAN,"Passive")
@@ -316,7 +320,8 @@ record(calc,"$(BASE):CMaxVert"){
    field(INPF,"$(BASE):CFullScale CPP MS")
 }
 
-record(calc,"$(BASE):CMinVert"){
+record(calc,"$(BASE):CMinVert")
+{
    field(DESC,"Min Vert")
    field(PINI,"YES")
    field(SCAN,"Passive")
