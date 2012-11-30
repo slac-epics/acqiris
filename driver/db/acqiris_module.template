@@ -478,6 +478,7 @@ record(waveform,"${BASE}:DebugData")
 	field(INP,"@M${MODULE} C-1 DBGR")
 	}
 
+# Why isn't this a bo record?
 record(mbbo,"${BASE}:MDAQStatus")
 {
    field(DESC,"DAQStatus")
@@ -487,8 +488,10 @@ record(mbbo,"${BASE}:MDAQStatus")
    field(SCAN,"Passive")
    field(ZRVL,"0")
    field(ZRST,"Stopped")
+   field(ZRSV, "MINOR" )
    field(ONVL,"1")
    field(ONST,"Running")
+   field(ONSV, "NO_ALARM" )
 }
 
 record(longin,"${BASE}:MEventCount")
@@ -527,3 +530,21 @@ record(longin,"${BASE}:MTruncated")
    field(SCAN,"1 second")
 }
 
+record(calc,"$(BASE):MEventRate"){
+   field(DESC,"Event Rate")
+   field(CALC,"B-A")
+   field(INPA,"$(BASE):MEventRate.LB NPP MS")
+   field(INPB,"$(BASE):MEventCount.VAL NPP MS")
+   field(SCAN,"1 second")
+   field(LOW,"0")
+   field(LSV,"MINOR")
+   field(EGU,"Hz")
+}
+
+record(bo, "$(BASE):Rearm") {
+  field(DESC, "Rearm the Acqiris")
+  field(DOL, "0")
+  field(OUT, "$(BASE):CH1:Data.RARM NPP MS")
+  field(ZNAM, "READY")
+  field(ONAM, "DONE")
+}
