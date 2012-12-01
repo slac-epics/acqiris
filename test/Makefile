@@ -6,3 +6,6 @@ acqconf: acqconf.c
 	       -D_BSD_SOURCE -Dlinux -DUNIX  -D_BSD_SOURCE -Dlinux  -D_REENTRANT \
 	       -ansi -I$(ACQDIR)/include acqconf.c \
 	       -Wl,-rpath,$(ACQDIR)/lib -L$(ACQDIR)/lib -lAqDrv4 -lpthread
+
+clean:
+	@/bin/rm -f acqconf
