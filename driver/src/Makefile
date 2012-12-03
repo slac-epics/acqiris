@@ -12,7 +12,8 @@ DBD += acqiris_support.dbd
 endif
 
 ifeq ($(T_A),linux-x86)
-ACQIRISDIR := /reg/g/pcds/package/acqiris
+ACQIRISDIR := /reg/g/pcds/package/external/acqiris_3.3a
+# ACQIRISDIR := /reg/g/pcds/package/acqiris
 ACQIRIS_INCLUDE := $(ACQIRISDIR)/usr/include
 ACQIRIS_LIB := $(ACQIRISDIR)/usr/lib
 ACQIRIS_KVERSION := 0x10006
