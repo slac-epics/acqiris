@@ -40,6 +40,11 @@ extern "C" {
   {
     ViInt32 nbrInstruments;
     ViStatus status = Acqrs_getNbrInstruments(&nbrInstruments);
+    if (status != VI_SUCCESS) {
+        fprintf(stderr, "Cannot get number of instruments?!?\n");
+        return 0;
+    }
+
     int module;
     for (module=0; module<nbrInstruments; ) {
       acqiris_driver_t* ad = &acqiris_drivers[module];
@@ -64,14 +69,14 @@ extern "C" {
     }
 
     return module;
-  }   
+  }
 
   static int acqirisInit(int order)
   {
     static unsigned long ev140 = 140;
     nbr_acqiris_drivers = acqiris_find_devices();
     if (!nbr_acqiris_drivers) {
-      fprintf(stderr, "*** Could not find any acqiris device\n");
+      fprintf(stderr, "*** Could not find any acqiris devices\n");
       return -1;
     }
     acqiris_dma_mutex = epicsMutexMustCreate();
