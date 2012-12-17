@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "evrTime.h"
 
 extern "C" {
   acqiris_driver_t acqiris_drivers[MAX_DEV];
@@ -125,7 +126,7 @@ extern "C" {
         return 1;
     }
     acqiris_drivers[module].trigger = (unsigned long *) trigaddr.pfield;
-    acqiris_drivers[module].gen = 4 + (unsigned long *) trigaddr.pfield;
+    acqiris_drivers[module].gen = MAX_EV_TRIGGERS + (unsigned long *) trigaddr.pfield;
     return 0;
   }
 
