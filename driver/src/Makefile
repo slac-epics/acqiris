@@ -2,18 +2,18 @@ TOP := ../..
 include $(TOP)/configure/CONFIG
 
 ifeq ($(T_A),linux-x86_64)
-ACQIRISDIR := /reg/g/pcds/package/external/acqiris_4.2a
+ACQIRIS_PKG_DIR := /reg/g/pcds/package/external/acqiris_4.2a
+ACQIRIS_PKG_LIB := $(ACQIRIS_PKG_DIR)/lib64
 ACQIRIS_KVERSION := 0x20000
-ACQIRIS_LIB := $(ACQIRISDIR)/lib64
 endif
 
 ifeq ($(T_A),linux-x86)
-ACQIRISDIR := /reg/g/pcds/package/external/acqiris_3.3a
+ACQIRIS_PKG_DIR := /reg/g/pcds/package/external/acqiris_3.3a
+ACQIRIS_PKG_LIB := $(ACQIRIS_PKG_DIR)/lib
 ACQIRIS_KVERSION := 0x10006
-ACQIRIS_LIB := $(ACQIRISDIR)/lib
 endif
 
-ACQIRIS_INCLUDE := $(ACQIRISDIR)/include
+ACQIRIS_PKG_INCLUDE := $(ACQIRIS_PKG_DIR)/include
 
 LIBRARY := acqiris_support
 DBD += acqiris_support.dbd
@@ -34,8 +34,8 @@ LIBSRCS += acqiris_drv_wf.cpp
 LIBSRCS += acqiris_daq.cpp
 LIBSRCS += acqiris_drv_init.cpp
 
-USR_CFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
-USR_CPPFLAGS += -I$(ACQIRIS_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
-acqiris_support_LDFLAGS += -L$(ACQIRIS_LIB) -lAqDrv4
+USR_CFLAGS += -I$(ACQIRIS_PKG_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
+USR_CPPFLAGS += -I$(ACQIRIS_PKG_INCLUDE) -D_ACQIRIS -D_LINUX -DACQIRIS_KVERSION=$(ACQIRIS_KVERSION)
+acqiris_support_LDFLAGS += -L$(ACQIRIS_PKG_LIB) -lAqDrv4
 
 include $(TOP)/configure/RULES

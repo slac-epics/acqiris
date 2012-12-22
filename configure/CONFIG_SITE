@@ -1,2 +1,2 @@
 # Following avoid cross compilations
-CROSS_COMPILER_TARGET_ARCHS=linux-x86 linux-x86_64
+CROSS_COMPILER_TARGET_ARCHS=linux-x86 

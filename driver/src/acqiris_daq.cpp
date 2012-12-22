@@ -40,7 +40,8 @@ extern "C"
                    evr_delta / 1000000000L, evr_delta % 1000000000L, evr_ts->secPastEpoch, evr_ts->nsec);
         }
         while (evr_delta <= acq_delta) {
-            if (status = evrTimeGetFifo(&evr_ts_new, trigevent, idx, 1))
+            status = evrTimeGetFifo(&evr_ts_new, trigevent, idx, 1);
+            if ( status != 0 )
                 break;
             if (evr_ts_new.nsec > evr_ts->nsec)
                 evr_delta = ((long long)(evr_ts_new.secPastEpoch - evr_ts->secPastEpoch) * 1000000000ll +
