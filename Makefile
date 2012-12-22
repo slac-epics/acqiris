@@ -4,3 +4,8 @@ include $(TOP)/configure/CONFIG
 DIRS += configure
 DIRS += driver
 include $(TOP)/configure/RULES_TOP
+
+clean:	clean_test
+
+clean_test:
+	$(MAKE) -C ./test clean

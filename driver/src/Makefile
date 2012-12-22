@@ -3,23 +3,20 @@ include $(TOP)/configure/CONFIG
 
 ifeq ($(T_A),linux-x86_64)
 ACQIRIS_PKG_DIR := /reg/g/pcds/package/external/acqiris_4.2a
-ACQIRIS_PKG_INCLUDE := $(ACQIRIS_PKG_DIR)/include
 ACQIRIS_PKG_LIB := $(ACQIRIS_PKG_DIR)/lib64
 ACQIRIS_KVERSION := 0x20000
-
-LIBRARY := acqiris_support
-DBD += acqiris_support.dbd
 endif
 
 ifeq ($(T_A),linux-x86)
 ACQIRIS_PKG_DIR := /reg/g/pcds/package/external/acqiris_3.3a
-ACQIRIS_PKG_INCLUDE := $(ACQIRIS_PKG_DIR)/include
 ACQIRIS_PKG_LIB := $(ACQIRIS_PKG_DIR)/lib
 ACQIRIS_KVERSION := 0x10006
+endif
+
+ACQIRIS_PKG_INCLUDE := $(ACQIRIS_PKG_DIR)/include
 
 LIBRARY := acqiris_support
 DBD += acqiris_support.dbd
-endif
 
 LIBSRCS += acqiris_dev_li.cpp
 LIBSRCS += acqiris_dev_lo.cpp

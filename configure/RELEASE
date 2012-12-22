@@ -11,8 +11,7 @@ EPICS_BASE=$(EPICS_SITE_TOP)/base/$(BASE_MODULE_VERSION)
 # ===============================================================
 # Define the version(s) of any other needed modules 
 # ===============================================================
-# for R3.14.9 it was EVENT_MODULE_VERSION=R3.3.0-1.0.6
-EVENT_MODULE_VERSION=R3.3.0-2.2.0
+EVENT_MODULE_VERSION=R3.3.0-2.3.0
 
 # ============================================================
 # External Support module path definitions
@@ -27,8 +26,5 @@ EVENT_MODULE_VERSION=R3.3.0-2.2.0
 #
 # If your build fails, look for these paths in your build output
 # ============================================================
-# Example: IPAC=$(EPICS_MODULES)/ipac/$(IPAC_MODULE_VERSION)
-
-ACQIRIS_DRIVER=/reg/g/pcds/package/acqiris
 EVENT=$(EPICS_MODULES)/event/$(EVENT_MODULE_VERSION)
 
