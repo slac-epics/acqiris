@@ -74,7 +74,7 @@ extern "C" {
 
   static int acqirisInit(int order)
   {
-    static unsigned long ev140 = 140;
+    static epicsUInt32 ev140 = 140;
     nbr_acqiris_drivers = acqiris_find_devices();
     if (!nbr_acqiris_drivers) {
       fprintf(stderr, "*** Could not find any acqiris devices\n");
@@ -130,8 +130,8 @@ extern "C" {
         printf("No PV trigger named %s!\n", trigger);
         return 1;
     }
-    acqiris_drivers[module].trigger = (unsigned long *) trigaddr.pfield;
-    acqiris_drivers[module].gen = MAX_EV_TRIGGERS + (unsigned long *) trigaddr.pfield;
+    acqiris_drivers[module].trigger = (epicsUInt32 *) trigaddr.pfield;
+    acqiris_drivers[module].gen = MAX_EV_TRIGGERS + (epicsUInt32 *) trigaddr.pfield;
     return 0;
   }
 
