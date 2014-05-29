@@ -12,7 +12,7 @@
 #include "acqiris_sync.hh"
 
 #define ACQ_TRACE  1
-int acq_debug = ACQ_TRACE;
+int acq_debug = 0;
 
 #define SUCCESSREAD(x) (((x)&0x80000000)==VI_SUCCESS)
 
@@ -39,7 +39,7 @@ extern "C"
 int acqirisSyncObject::Init(void)
 {
     m_delay = &delay;
-    delay   = -0.5;
+    delay   = -0.5;  // MCB - To correct the rounding in timesync.
 
     /* The parameters to read all of the data. */
     memset(&readParams, 0, sizeof(readParams));
