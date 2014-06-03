@@ -83,7 +83,6 @@ extern "C" {
     acqiris_dma_mutex = epicsMutexMustCreate();
     for (unsigned module=0; module<nbr_acqiris_drivers; module++) {
       int channel;
-      char name[32];
       acqiris_driver_t* ad = &acqiris_drivers[module];
 
 	ad->run_semaphore = epicsEventMustCreate(epicsEventEmpty);
@@ -92,6 +91,7 @@ extern "C" {
       ad->count = 0;
       ad->trigger = &ev140;
       ad->gen = &ev140;
+      ad->sync = "";
 
       for(channel=0; channel<ad->nchannels; channel++) {
 	int size = (ad->maxsamples+ad->extra)*sizeof(short);
@@ -112,18 +112,27 @@ extern "C" {
 	ad->data[ad->nchannels].read_ptr=0;
         ad->data[ad->nchannels].time_ptr = NULL;	//Pointer to re-arm field of record.
 
-      snprintf(name, sizeof(name), "tacqirisdaq%u", module);
       scanIoInit(&ad->ioscanpvt);
+    }    
+    return 0;
+  }
+
+  static int acqirisStart(int order)
+  {
+    for (unsigned module=0; module<nbr_acqiris_drivers; module++) {
+      char name[32];
+      acqiris_driver_t* ad = &acqiris_drivers[module];
+      snprintf(name, sizeof(name), "tacqirisdaq%u", module);
       epicsThreadMustCreate(name, 
 			    epicsThreadPriorityHigh + 5, // MCB epicsThreadPriorityMin?!?
 			    5000000,
 			    acqiris_daq_thread, 
 			    ad); 
     }    
-    return 0;
+      return 0;
   }
 
-  static int acqirisSetTrigger(int module, char *trigger)
+  static int acqirisSetTrigger(int module, char *trigger, char *sync)
   {
     DBADDR trigaddr;
     if (dbNameToAddr(trigger, &trigaddr)) {
@@ -132,6 +141,10 @@ extern "C" {
     }
     acqiris_drivers[module].trigger = (epicsUInt32 *) trigaddr.pfield;
     acqiris_drivers[module].gen = MAX_EV_TRIGGERS + (epicsUInt32 *) trigaddr.pfield;
+    if (sync)
+        acqiris_drivers[module].sync = strdup(sync);
+    else
+        acqiris_drivers[module].sync = "";
     return 0;
   }
 
@@ -145,16 +158,28 @@ extern "C" {
     acqirisInit(arg[0].ival);
   }
 
+  static const iocshArg acqirisStartArg0 = {"nSamples",iocshArgInt};
+  static const iocshArg * const acqirisStartArgs[1] = {&acqirisStartArg0};
+  static const iocshFuncDef acqirisStartFuncDef =
+    {"acqirisStart",1,acqirisStartArgs};
+
+  static void acqirisStartCallFunc(const iocshArgBuf *arg)
+  {
+    acqirisStart(arg[0].ival);
+  }
+
   static const iocshArg acqirisSetTriggerArg0 = {"module",iocshArgInt};
   static const iocshArg acqirisSetTriggerArg1 = {"trigger", iocshArgString};
-  static const iocshArg * const acqirisSetTriggerArgs[2] = {&acqirisSetTriggerArg0,
-                                                            &acqirisSetTriggerArg1};
+  static const iocshArg acqirisSetTriggerArg2 = {"sync", iocshArgString};
+  static const iocshArg * const acqirisSetTriggerArgs[3] = {&acqirisSetTriggerArg0,
+                                                            &acqirisSetTriggerArg1,
+                                                            &acqirisSetTriggerArg2};
   static const iocshFuncDef acqirisSetTriggerFuncDef =
-    {"acqirisSetTrigger",2,acqirisSetTriggerArgs};
+    {"acqirisSetTrigger",3,acqirisSetTriggerArgs};
 
   static void acqirisSetTriggerCallFunc(const iocshArgBuf *arg)
   {
-    acqirisSetTrigger(arg[0].ival, arg[1].sval);
+    acqirisSetTrigger(arg[0].ival, arg[1].sval, arg[2].sval);
   }
 
 static const iocshArg		acqdebugArg0	= { "level",	iocshArgInt };
@@ -169,6 +194,7 @@ static void  acqdebugCall( const iocshArgBuf * args )
   void acqirisRegistrar()
   {
     iocshRegister(&acqirisInitFuncDef,acqirisInitCallFunc);
+    iocshRegister(&acqirisStartFuncDef,acqirisStartCallFunc);
     iocshRegister(&acqirisSetTriggerFuncDef,acqirisSetTriggerCallFunc);
     iocshRegister(&acqdebugFuncDef,acqdebugCall);
   }

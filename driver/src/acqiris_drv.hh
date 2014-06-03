@@ -39,6 +39,7 @@ struct acqiris_driver_t {
   unsigned truncated;
   unsigned char version;
   acqiris_data_t data[MAX_CHANNEL];
+  char *sync;
 };
 typedef struct acqiris_driver_t ad_t;
 

@@ -29,7 +29,7 @@ extern "C"
         acqiris_driver_t* ad = reinterpret_cast<acqiris_driver_t*>(arg);
 
         acqirisSyncObject *sobj = new acqirisSyncObject(ad);
-        Synchronizer  *sync = new Synchronizer(sobj);
+        Synchronizer  *sync = new Synchronizer(sobj, ad->sync);
 
         sync->poll();
     }
@@ -39,7 +39,14 @@ extern "C"
 int acqirisSyncObject::Init(void)
 {
     m_delay = &delay;
-    delay   = -0.5;  // MCB - To correct the rounding in timesync.
+    /*
+     * OK, this is weird.  The delay is often calculated, and so timesync rounds it
+     * to the nearest fiducial by adding 0.5.  This is then subtracted from the lastfid
+     * to get our fiducial estimate.  However, fiducials are off by one from the other
+     * event codes, and the acqiris is *very* fast.  So we put in -1.5 to get rid of the
+     * rounding *and* this difference.
+     */
+    delay   = -1.5;
 
     /* The parameters to read all of the data. */
     memset(&readParams, 0, sizeof(readParams));

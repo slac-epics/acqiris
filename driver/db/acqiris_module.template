@@ -550,3 +550,11 @@ record(bo, "$(BASE):Rearm")
   field(ZNAM, "READY")
   field(ONAM, "DONE")
 }
+
+record( bi, "$(BASE):SYNC" )
+{
+  field( DESC, "Timestamp Synchronization" )
+  field( ZNAM, "Out of Sync" )
+  field( ONAM, "Synchronized" )
+  field( VAL, "0" )
+}

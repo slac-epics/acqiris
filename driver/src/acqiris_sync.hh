@@ -1,7 +1,7 @@
 #ifndef ACQIRIS_SYNC_HH
 #define ACQIRIS_SYNC_HH
 
-#include"sync.h"
+#include"timesync.h"
 
 class acqirisSyncObject : public SyncObject {
 public:
