@@ -27,6 +27,7 @@ ${BASE}:MTbSegmentPad				1
 ${BASE}:MTemperature_m				1
 ${BASE}:MTriggerTimeouts			1
 ${BASE}:MTruncated					1
+${BASE}:SYNC                                    1 monitor
 
 # Controls
 ${BASE}:MApertureTime				1		monitor
