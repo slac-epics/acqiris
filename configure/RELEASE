@@ -12,7 +12,7 @@ EPICS_BASE=$(EPICS_SITE_TOP)/base/$(BASE_MODULE_VERSION)
 # Define the version(s) of any other needed modules 
 # ===============================================================
 EVENT_MODULE_VERSION=R4.0.0-2.0.2
-TIMESYNC_MODULE_VERSION=R1.0.4
+TIMESYNC_MODULE_VERSION=R1.0.5
 
 # ============================================================
 # External Support module path definitions
@@ -30,6 +30,6 @@ TIMESYNC_MODULE_VERSION=R1.0.4
 EVENT=$(EPICS_MODULES)/event/$(EVENT_MODULE_VERSION)
 TIMESYNC=$(EPICS_MODULES)/timesync/$(TIMESYNC_MODULE_VERSION)
 
-#MY_MODULES=/reg/neh/home1/mcbrowne/trunk12/modules
+MY_MODULES=/reg/neh/home1/mcbrowne/trunk12/modules
 #EVENT=$(MY_MODULES)/event/current
 #TIMESYNC=$(MY_MODULES)/timesync/current

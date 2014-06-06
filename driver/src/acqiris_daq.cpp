@@ -29,24 +29,19 @@ extern "C"
         acqiris_driver_t* ad = reinterpret_cast<acqiris_driver_t*>(arg);
 
         acqirisSyncObject *sobj = new acqirisSyncObject(ad);
-        Synchronizer  *sync = new Synchronizer(sobj, ad->sync);
 
-        sync->poll();
+        sobj->poll();
     }
 }
 
-// Initialize, return 0 if OK.
-int acqirisSyncObject::Init(void)
+// Initialize
+acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
 {
-    m_delay = &delay;
-    /*
-     * OK, this is weird.  The delay is often calculated, and so timesync rounds it
-     * to the nearest fiducial by adding 0.5.  This is then subtracted from the lastfid
-     * to get our fiducial estimate.  However, fiducials are off by one from the other
-     * event codes, and the acqiris is *very* fast.  So we put in -1.5 to get rid of the
-     * rounding *and* this difference.
-     */
-    delay   = -1.5;
+    acqiris = _acqiris;
+    acq_ts = 0;
+    trigger_skip_count = 0;
+    segDesc[0].timeStampHi = 0;
+    segDesc[0].timeStampLo = 0;
 
     /* The parameters to read all of the data. */
     memset(&readParams, 0, sizeof(readParams));
@@ -72,10 +67,15 @@ int acqirisSyncObject::Init(void)
     epicsEventWait(acqiris->run_semaphore);
     printf("acqiris_daq_thread(%d) is running!\n", acqiris->module);
 
-    m_event = acqiris->trigger;
-    m_gen   = acqiris->gen;
-
-    return 0;
+    /*
+     * OK, this is weird.  The delay is often calculated, and so timesync rounds it
+     * to the nearest fiducial by adding 0.5.  This is then subtracted from the lastfid
+     * to get our fiducial estimate.  However, fiducials are off by one from the other
+     * event codes, and the acqiris is *very* fast.  So we put in -1.5 to get rid of the
+     * rounding *and* this difference.
+     */
+    delay   = -1.5;
+    SetParams(acqiris->trigger, acqiris->gen, &delay, acqiris->sync);
 }
 
 // Get some data and return it encapsulated.
