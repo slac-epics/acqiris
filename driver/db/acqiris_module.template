@@ -558,3 +558,19 @@ record( bi, "$(BASE):SYNC" )
   field( ONAM, "Synchronized" )
   field( VAL, "0" )
 }
+
+# This record calculates the expected delay, in fiducials, between the trigger and the
+# reception of the acqiris data.  The acqiris is fast, so this is basically the delay
+# from the event to the trigger.
+#
+# The 1 is a fudge factor, because lastfid seems to be one before all of the other event
+# fiducials.  Go figure.
+record(calc, "$(BASE):DATA_DELAY")
+{
+  field(DESC, "IPIMB Data Delay")
+  field(INPA, "$(EVR):CTRL.DG$(TRIG)C CPP")
+  field(INPB, "$(EVR):CTRL.DG$(TRIG)D CPP")
+  field(INPC, "$(EVR):CTRL.DG$(TRIG)W CPP")
+  field(CALC, "(8.4e-9*A*B)*360-1")
+  field(PINI, "NO")
+}

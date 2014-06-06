@@ -27,6 +27,7 @@ struct acqiris_driver_t {
   int id;
   epicsUInt32 *trigger;
   epicsUInt32 *gen;
+  double      *delay;
   IOSCANPVT ioscanpvt;
   epicsEventId run_semaphore;
   epicsMutexId daq_mutex;

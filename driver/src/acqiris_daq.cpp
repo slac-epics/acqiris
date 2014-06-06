@@ -37,6 +37,7 @@ extern "C"
 // Initialize
 acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
 {
+    static double statdelay = -1.0;
     acqiris = _acqiris;
     acq_ts = 0;
     trigger_skip_count = 0;
@@ -67,15 +68,8 @@ acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
     epicsEventWait(acqiris->run_semaphore);
     printf("acqiris_daq_thread(%d) is running!\n", acqiris->module);
 
-    /*
-     * OK, this is weird.  The delay is often calculated, and so timesync rounds it
-     * to the nearest fiducial by adding 0.5.  This is then subtracted from the lastfid
-     * to get our fiducial estimate.  However, fiducials are off by one from the other
-     * event codes, and the acqiris is *very* fast.  So we put in -1.5 to get rid of the
-     * rounding *and* this difference.
-     */
-    delay   = -1.5;
-    SetParams(acqiris->trigger, acqiris->gen, &delay, acqiris->sync);
+    SetParams(acqiris->trigger, acqiris->gen, acqiris->delay ? acqiris->delay : &statdelay,
+              acqiris->sync);
 }
 
 // Get some data and return it encapsulated.

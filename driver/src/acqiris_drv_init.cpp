@@ -91,6 +91,7 @@ extern "C" {
       ad->count = 0;
       ad->trigger = &ev140;
       ad->gen = &ev140;
+      ad->delay = NULL;
       ad->sync = "";
 
       for(channel=0; channel<ad->nchannels; channel++) {
@@ -132,19 +133,21 @@ extern "C" {
       return 0;
   }
 
-  static int acqirisSetTrigger(int module, char *trigger, char *sync)
+  static int acqirisSetTrigger(int module, char *trigger, char *sync, char *delay)
   {
-    DBADDR trigaddr;
+    DBADDR trigaddr, delayaddr;
+
     if (dbNameToAddr(trigger, &trigaddr)) {
-        printf("No PV trigger named %s!\n", trigger);
+        printf("No trigger PV named %s!\n", trigger);
         return 1;
     }
+    if (dbNameToAddr(delay, &delayaddr)) {
+        printf("No delay PV named %s, using 0!\n", delay);
+    } else
+        acqiris_drivers[module].delay = (double *) delayaddr.pfield;
     acqiris_drivers[module].trigger = (epicsUInt32 *) trigaddr.pfield;
     acqiris_drivers[module].gen = MAX_EV_TRIGGERS + (epicsUInt32 *) trigaddr.pfield;
-    if (sync)
-        acqiris_drivers[module].sync = strdup(sync);
-    else
-        acqiris_drivers[module].sync = "";
+    acqiris_drivers[module].sync = strdup(sync ? sync : "");
     return 0;
   }
 
@@ -171,15 +174,17 @@ extern "C" {
   static const iocshArg acqirisSetTriggerArg0 = {"module",iocshArgInt};
   static const iocshArg acqirisSetTriggerArg1 = {"trigger", iocshArgString};
   static const iocshArg acqirisSetTriggerArg2 = {"sync", iocshArgString};
-  static const iocshArg * const acqirisSetTriggerArgs[3] = {&acqirisSetTriggerArg0,
+  static const iocshArg acqirisSetTriggerArg3 = {"delay", iocshArgString};
+  static const iocshArg * const acqirisSetTriggerArgs[4] = {&acqirisSetTriggerArg0,
                                                             &acqirisSetTriggerArg1,
-                                                            &acqirisSetTriggerArg2};
+                                                            &acqirisSetTriggerArg2,
+                                                            &acqirisSetTriggerArg3};
   static const iocshFuncDef acqirisSetTriggerFuncDef =
-    {"acqirisSetTrigger",3,acqirisSetTriggerArgs};
+    {"acqirisSetTrigger",4,acqirisSetTriggerArgs};
 
   static void acqirisSetTriggerCallFunc(const iocshArgBuf *arg)
   {
-    acqirisSetTrigger(arg[0].ival, arg[1].sval, arg[2].sval);
+    acqirisSetTrigger(arg[0].ival, arg[1].sval, arg[2].sval, arg[3].sval);
   }
 
 static const iocshArg		acqdebugArg0	= { "level",	iocshArgInt };

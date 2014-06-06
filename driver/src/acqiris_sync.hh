@@ -20,7 +20,6 @@ private:
     AqDataDescriptor    wfDesc[4];
     AqSegmentDescriptor segDesc[4];
     char name[40];
-    double delay;
     unsigned long long acq_ts;
     int trigger_skip_count;
     char *dummy_buf;
