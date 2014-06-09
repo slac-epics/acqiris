@@ -179,7 +179,7 @@ int acqirisSyncObject::FidDiff(DataObject *dobj)
 #endif
     if (fidoff > TS_ERROR_PS)
         return -1;
-    return fidoff;
+    return fiddiff;
 }
 
 // Receive the data and timestamp.
