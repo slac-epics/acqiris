@@ -10,7 +10,7 @@ public:
     DataObject *Acquire(void);
     int CheckError(DataObject *dobj)   { return 0; }
     const char *Name(void)             { return name; }
-    int Fiducial(DataObject *dobj, int lastdatafid);
+    int FidDiff(DataObject *dobj);
     int Attributes(void)               { return HasTime; }
     void QueueData(DataObject *dobj, epicsTimeStamp &evt_time);
     void FlushData(void);

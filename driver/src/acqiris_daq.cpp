@@ -167,7 +167,7 @@ DataObject *acqirisSyncObject::Acquire(void)
 
 // Calculate the expected fiducial of this DataObject.
 // acq_ts is the Acqiris time of the last acquire, and the new time is in the segment header.
-int acqirisSyncObject::Fiducial(DataObject *dobj, int lastdatafid)
+int acqirisSyncObject::FidDiff(DataObject *dobj)
 {
     long long acq_delta = (long long)(((((unsigned long long)segDesc[0].timeStampHi) << 32) | 
                                        ((unsigned long long)segDesc[0].timeStampLo)) - acq_ts);
@@ -179,10 +179,7 @@ int acqirisSyncObject::Fiducial(DataObject *dobj, int lastdatafid)
 #endif
     if (fidoff > TS_ERROR_PS)
         return -1;
-    int fid = lastdatafid += fiddiff;
-    while (fid > 0x1ffe0)
-        fid -= 0x1ffe0;
-    return fid;
+    return fidoff;
 }
 
 // Receive the data and timestamp.
