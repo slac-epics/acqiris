@@ -106,7 +106,6 @@ DataObject *acqirisSyncObject::Acquire(void)
             }
         }
 
-#if 0
         // Count the rearm flags.
         unsigned short rarm_flag = 0;
         if((acqiris->version>0)&&(trigger_skip_count < TRIG_BLOCK_PROTECTION)){
@@ -118,7 +117,6 @@ DataObject *acqirisSyncObject::Acquire(void)
             FlushData();
             continue;
         }
-#endif
 
         unsigned readerrors_old = acqiris->readerrors;
         trigger_skip_count = 0;
