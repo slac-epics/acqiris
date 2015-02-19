@@ -97,12 +97,12 @@ DataObject *acqirisSyncObject::Acquire(void)
             AcqrsD1_stopAcquisition(id); // Should also reset the board here...?
             acqiris->timeouts++;
             if (acq_debug & ACQ_TRACE) {
-                printf("T%d:%x\n", acqiris->module, lastfid);
+                printf("T%d:%x\n", acqiris->module, evrGetLastFiducial());
             }
             continue;
         } else {
             if (acq_debug & ACQ_TRACE) {
-                printf("A%d:%x\n", acqiris->module, lastfid);
+                printf("A%d:%x\n", acqiris->module, evrGetLastFiducial());
             }
         }
 
