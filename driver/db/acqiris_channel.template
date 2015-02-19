@@ -268,12 +268,13 @@ record(waveform,"${BASE}:Data")
    field(FLNK,"${BASE}:CURRENTFID.PROC PP NMS")
 }
 
-record(genSub, "${BASE}:CURRENTFID")
+record(aSub, "${BASE}:CURRENTFID")
 {
    field(DESC, "Current Fiducial")
    field(SCAN, "Passive")
    field(SNAM, "evrTimeGetFiducial")
    field(INPA, "${BASE}:Data.NAME")
+   field(FTA,  "STRING")
    field(TSEL, "${BASE}:Data.TIME")
    field(FLNK,"${BASE}:Fanout.PROC PP NMS")
 }
