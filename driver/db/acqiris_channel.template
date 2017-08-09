@@ -268,13 +268,22 @@ record(waveform,"${BASE}:Data")
    field(FLNK,"${BASE}:CURRENTFID.PROC PP NMS")
 }
 
-record(aSub, "${BASE}:CURRENTFID")
+record(waveform,"${BASE}:DataCopy")
+{
+   field(SCAN, "0.2 second")
+   field(DESC, "Viewing copy of acqiris waveform record")
+   field(NELM, "${NELM}")
+   field(FTVL, "SHORT")
+   field(INP, "${BASE}:Data")
+   field(TSE, "-2")
+}
+
+record(genSub, "${BASE}:CURRENTFID")
 {
    field(DESC, "Current Fiducial")
    field(SCAN, "Passive")
    field(SNAM, "evrTimeGetFiducial")
    field(INPA, "${BASE}:Data.NAME")
-   field(FTA,  "STRING")
    field(TSEL, "${BASE}:Data.TIME")
    field(FLNK,"${BASE}:Fanout.PROC PP NMS")
 }
