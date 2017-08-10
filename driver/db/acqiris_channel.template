@@ -270,7 +270,7 @@ record(waveform,"${BASE}:Data")
 
 record(waveform,"${BASE}:DataCopy")
 {
-   field(SCAN, "0.2 second")
+   field(SCAN, ".2 second")
    field(DESC, "Viewing copy of acqiris waveform record")
    field(NELM, "${NELM}")
    field(FTVL, "SHORT")
