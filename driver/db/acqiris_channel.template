@@ -278,7 +278,7 @@ record(waveform,"${BASE}:DataCopy")
    field(TSE, "-2")
 }
 
-record(genSub, "${BASE}:CURRENTFID")
+record(aSub, "${BASE}:CURRENTFID")
 {
    field(DESC, "Current Fiducial")
    field(SCAN, "Passive")
