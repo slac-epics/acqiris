@@ -1,0 +1,29 @@
+#
+# RELEASE_NOTES: acqiris module
+#
+R2.0.0.0-2.16.1	2017-11-18 Bruce Hill
+	Updated to git workflow, event2/R4.2.4 and timesync/R1.1.10
+
+R2.0.0.0-2.16.0	2017-08-09 Bruce Hill
+	Fix typo in db SCAN setting.
+	Added a viewing copy of the Acqiris data waveform.
+
+R2.0.0.0-2.15.4	2016-05-25 Michael C. Browne
+	Bump event2
+
+R2.0.0.0-2.15.3	2015-05-01 Michael C. Browne
+	Update to latest timesync.
+
+R2.0.0.0-2.15.2 2015-04-02 Michael C. Browne
+	This should use event2, not event.  Also, move to latest timesync.
+
+R2.0.0.0-2.15.1 2015-02-19 Michael C. Browne
+	No lastfid, use the interface routine!
+	Update modules and replace genSub with aSub.
+
+R2.0.0.0-2.15.0 2014-06-25 Bruce Hill
+	Bumped up to event R4.0.0-2.1.0
+	Adds auto update of :TDES.LOPR as well as making :EventCode:1:Count
+	run at 360Hz instead of 120Hz and has a valid fiducial timestamp.
+	Also adds :360HzFiducial
+	Reenable rearm code.
