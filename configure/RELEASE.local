@@ -19,8 +19,8 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
-EVENT2_MODULE_VERSION		=	R4.2.4
-TIMESYNC_MODULE_VERSION		=	R1.1.10
+EVENT2_MODULE_VERSION		=	R4.3.0
+TIMESYNC_MODULE_VERSION		=	R1.1.11
 
 # ==========================================================
 # External Support module path definitions

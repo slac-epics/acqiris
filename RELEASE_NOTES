@@ -1,6 +1,9 @@
 #
 # RELEASE_NOTES: acqiris module
 #
+R2.0.0.0-2.16.2	2018-1-22 Bruce Hill
+	Updated to event2/R4.3.0 and timesync/R1.1.11 to fix event code clearing bug.
+
 R2.0.0.0-2.16.1	2017-11-18 Bruce Hill
 	Updated to git workflow, event2/R4.2.4 and timesync/R1.1.10
 
