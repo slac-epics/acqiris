@@ -265,7 +265,7 @@ record(waveform,"${BASE}:Data")
    field(FTVL,"SHORT")
    field(INP,"@M${MODULE} C${CHANNEL} MWFS V${VERSION}")
    field(TSE,"-2")
-   field(FLNK,"${BASE}:CURRENTFID.PROC PP NMS")
+   field(FLNK,"${BASE}:CURRENTFID")
 }
 
 record(waveform,"${BASE}:DataCopy")
@@ -275,6 +275,7 @@ record(waveform,"${BASE}:DataCopy")
    field(NELM, "${NELM}")
    field(FTVL, "SHORT")
    field(INP, "${BASE}:Data")
+   field(TSEL, "${BASE}:Data.TIME")
    field(TSE, "-2")
 }
 
@@ -283,9 +284,9 @@ record(aSub, "${BASE}:CURRENTFID")
    field(DESC, "Current Fiducial")
    field(SCAN, "Passive")
    field(SNAM, "evrTimeGetFiducial")
-   field(INPA, "${BASE}:Data.NAME")
+   field(TSE,  "-2")
    field(TSEL, "${BASE}:Data.TIME")
-   field(FLNK,"${BASE}:Fanout.PROC PP NMS")
+   field(FLNK,"${BASE}:Fanout")
 }
 
 record(fanout,"${BASE}:Fanout")
