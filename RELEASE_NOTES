@@ -1,6 +1,9 @@
 #
 # RELEASE_NOTES: acqiris module
 #
+R2.0.0.0-3.0.0	2018-12-21 Bruce Hill
+	Update code to use timingApi instead of event2 API.
+
 R2.0.0.0-2.17.0	2018-1-22 Bruce Hill
 	Fixed missing TSE=-2 for evrTimeGetFiducial aSub records
 
