@@ -19,8 +19,8 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
-EVENT2_MODULE_VERSION		=	R4.3.0
-TIMESYNC_MODULE_VERSION		=	R1.1.11
+TIMESYNC_MODULE_VERSION		=	R2.0.1
+TIMINGAPI_MODULE_VERSION	=	R0.6
 
 # ==========================================================
 # External Support module path definitions
@@ -35,11 +35,10 @@ TIMESYNC_MODULE_VERSION		=	R1.1.11
 #
 # If your build fails, look for these paths in your build output
 # ==========================================================
-EVENT2		= $(EPICS_MODULES)/event2/$(EVENT2_MODULE_VERSION)
 TIMESYNC	= $(EPICS_MODULES)/timesync/$(TIMESYNC_MODULE_VERSION)
+TIMINGAPI	= $(EPICS_MODULES)/timingApi/$(TIMINGAPI_MODULE_VERSION)
 
 #MY_MODULES=/reg/neh/home1/mcbrowne/trunk12/modules
-#EVENT2=$(MY_MODULES)/event2/current
 #TIMESYNC=$(MY_MODULES)/timesync/current
 
 # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths

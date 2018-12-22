@@ -10,8 +10,8 @@
 ifeq ($(wildcard $(EPICS_BASE)/lib/$(T_A)),)
 $(error Invalid EPICS_BASE: $(EPICS_BASE))
 endif
-ifeq ($(wildcard $(EVENT2)/lib/$(T_A)),)
-$(error Invalid EVENT2: $(EVENT2))
+ifeq ($(wildcard $(TIMINGAPI)/include),)
+$(error Invalid TIMINGAPI: $(TIMINGAPI))
 endif
 ifeq ($(wildcard $(TIMESYNC)/lib/$(T_A)),)
 $(error Invalid TIMESYNC: $(TIMESYNC))

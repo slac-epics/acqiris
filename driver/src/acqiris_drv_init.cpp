@@ -10,7 +10,11 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "evrTime.h"
+#include "timingFifoApi.h"
+
+#ifndef MAX_EV_TRIGGERS
+#define MAX_EV_TRIGGERS 12
+#endif
 
 extern "C" {
   acqiris_driver_t acqiris_drivers[MAX_DEV];

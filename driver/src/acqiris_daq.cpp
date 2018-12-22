@@ -3,8 +3,10 @@
 
 #include <AcqirisD1Import.h>
 #include <epicsTime.h>
-#include <evrTime.h>
+#include "timingFifoApi.h"
 
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -68,7 +70,8 @@ acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
     epicsEventWait(acqiris->run_semaphore);
     printf("acqiris_daq_thread(%d) is running!\n", acqiris->module);
 
-    SetParams(acqiris->trigger, acqiris->gen, acqiris->delay ? acqiris->delay : &statdelay,
+	epicsUInt32		timingMode	= 0;	// Timing mode, 0=LCLS1, 1=LCLS2
+    SetParams( &timingMode, acqiris->trigger, acqiris->gen, acqiris->delay ? acqiris->delay : &statdelay,
               acqiris->sync);
 }
 
@@ -97,12 +100,12 @@ DataObject *acqirisSyncObject::Acquire(void)
             AcqrsD1_stopAcquisition(id); // Should also reset the board here...?
             acqiris->timeouts++;
             if (acq_debug & ACQ_TRACE) {
-                printf("T%d:%x\n", acqiris->module, evrGetLastFiducial());
+                printf("T%d:%"PRIX64"\n", acqiris->module, timingGetLastFiducial());
             }
             continue;
         } else {
             if (acq_debug & ACQ_TRACE) {
-                printf("A%d:%x\n", acqiris->module, evrGetLastFiducial());
+                printf("A%d:%"PRIX64"\n", acqiris->module, timingGetLastFiducial());
             }
         }
 
