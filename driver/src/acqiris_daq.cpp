@@ -36,6 +36,8 @@ extern "C"
     }
 }
 
+static epicsUInt32 timingMode = 0;	// Timing mode, 0=LCLS1, 1=LCLS2
+
 // Initialize
 acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
 {
@@ -70,7 +72,6 @@ acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)
     epicsEventWait(acqiris->run_semaphore);
     printf("acqiris_daq_thread(%d) is running!\n", acqiris->module);
 
-	epicsUInt32		timingMode	= 0;	// Timing mode, 0=LCLS1, 1=LCLS2
     SetParams( &timingMode, acqiris->trigger, acqiris->gen, acqiris->delay ? acqiris->delay : &statdelay,
               acqiris->sync);
 }
