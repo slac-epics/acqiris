@@ -19,7 +19,7 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
-TIMESYNC_MODULE_VERSION		=	R2.0.1
+TIMESYNC_MODULE_VERSION		=	R2.0.2
 TIMINGAPI_MODULE_VERSION	=	R0.6
 
 # ==========================================================

@@ -74,7 +74,7 @@ template<> int acqiris_read_record_specialized(waveformRecord* pwf)
 
     if(arc->channel != ad->nchannels){
 	ad->truncated++;
-	}
+    }
   }
   epicsMutexLock(ad->daq_mutex);
   rwf->rfunc(pwf->bptr, buffer, nsamples);
