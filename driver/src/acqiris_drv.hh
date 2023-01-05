@@ -41,6 +41,7 @@ struct acqiris_driver_t {
   unsigned char version;
   acqiris_data_t data[MAX_CHANNEL];
   char *sync;
+  int do_ts;
 };
 typedef struct acqiris_driver_t ad_t;
 

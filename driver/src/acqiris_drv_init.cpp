@@ -89,7 +89,7 @@ extern "C" {
       int channel;
       acqiris_driver_t* ad = &acqiris_drivers[module];
 
-	ad->run_semaphore = epicsEventMustCreate(epicsEventEmpty);
+      ad->run_semaphore = epicsEventMustCreate(epicsEventEmpty);
 
       ad->daq_mutex = epicsMutexMustCreate();
       ad->count = 0;
@@ -97,6 +97,7 @@ extern "C" {
       ad->gen = &ev140;
       ad->delay = NULL;
       ad->sync = "";
+      ad->do_ts = 1; /* Timestamp everything by default! */
 
       for(channel=0; channel<ad->nchannels; channel++) {
 	int size = (ad->maxsamples+ad->extra)*sizeof(short);
@@ -119,6 +120,13 @@ extern "C" {
 
       scanIoInit(&ad->ioscanpvt);
     }    
+    return 0;
+  }
+
+  static int acqirisDoTimeStamping(int module, int value)
+  {
+    acqiris_driver_t* ad = &acqiris_drivers[module];
+    ad->do_ts = value;
     return 0;
   }
 
@@ -165,6 +173,18 @@ extern "C" {
     acqirisInit(arg[0].ival);
   }
 
+  static const iocshArg acqirisDoTimeStampingArg0 = {"module",iocshArgInt};
+  static const iocshArg acqirisDoTimeStampingArg1 = {"value",iocshArgInt};
+  static const iocshArg * const acqirisDoTimeStampingArgs[2] = {&acqirisDoTimeStampingArg0,
+								&acqirisDoTimeStampingArg1};
+  static const iocshFuncDef acqirisDoTimeStampingFuncDef =
+    {"acqirisDoTimeStamping",2,acqirisDoTimeStampingArgs};
+
+  static void acqirisDoTimeStampingCallFunc(const iocshArgBuf *arg)
+  {
+    acqirisDoTimeStamping(arg[0].ival, arg[1].ival);
+  }
+
   static const iocshArg acqirisStartArg0 = {"nSamples",iocshArgInt};
   static const iocshArg * const acqirisStartArgs[1] = {&acqirisStartArg0};
   static const iocshFuncDef acqirisStartFuncDef =
@@ -203,6 +223,7 @@ static void  acqdebugCall( const iocshArgBuf * args )
   void acqirisRegistrar()
   {
     iocshRegister(&acqirisInitFuncDef,acqirisInitCallFunc);
+    iocshRegister(&acqirisDoTimeStampingFuncDef,acqirisDoTimeStampingCallFunc);
     iocshRegister(&acqirisStartFuncDef,acqirisStartCallFunc);
     iocshRegister(&acqirisSetTriggerFuncDef,acqirisSetTriggerCallFunc);
     iocshRegister(&acqdebugFuncDef,acqdebugCall);

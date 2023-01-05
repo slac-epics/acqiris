@@ -32,11 +32,30 @@ extern "C"
 
         acqirisSyncObject *sobj = new acqirisSyncObject(ad);
 
-        sobj->poll();
+	if (ad->do_ts)
+	    sobj->poll();
+	else
+	    sobj->poll_nots();
     }
 }
 
 static epicsUInt32 timingMode = 0;	// Timing mode, 0=LCLS1, 1=LCLS2
+
+/*
+ * If we aren't timestamping, this loop uses the timesync interface but
+ * just immediately queues up the data with a wall-clock timestamp.
+ */ 
+int acqirisSyncObject::poll_nots(void)
+{
+    DataObject *dobj = NULL;
+    epicsTimeStamp ts;
+    while (1) {
+	dobj = Acquire();
+	epicsTimeGetCurrent(&ts);
+        QueueData(dobj, ts);
+    }
+    return 0; /* We never get here, but keep gcc happy! */
+}
 
 // Initialize
 acqirisSyncObject::acqirisSyncObject(acqiris_driver_t *_acqiris)

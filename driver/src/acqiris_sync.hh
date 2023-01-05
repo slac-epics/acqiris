@@ -14,6 +14,7 @@ public:
     int Attributes(void)               { return HasTime; }
     void QueueData(DataObject *dobj, epicsTimeStamp &evt_time);
     void FlushData(void);
+    int poll_nots(void);      // Dumb acquisition/timestamp loop.
 private:
     acqiris_driver_t *acqiris;
     AqReadParameters    readParams, dummyReadParams;
